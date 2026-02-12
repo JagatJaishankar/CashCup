@@ -44,50 +44,75 @@ Transform local and regional football tournaments into professionally managed ev
 
 ## Styling Approach
 
-### Brand Colors
+### Brand Colors (Light Mode)
 ```css
 :root {
-  --neon-yellow: #DBFF00;
-  --pure-white: #FFFFFF;
-  --pure-black: #000000;
-  --dark-bg: #0A0A0A;
-  --success: #10B981;
-  --error: #EF4444;
-  --warning: #F59E0B;
+  /* Primary accent - sporty, energetic */
+  --color-primary: #FF4D00;       /* Electric Orange */
+
+  /* Secondary - near black for text */
+  --color-secondary: #0A0A0A;
+
+  /* Backgrounds */
+  --color-base-100: #FFFFFF;      /* Pure white */
+  --color-base-200: #F8F9FA;      /* Light gray cards */
+  --color-base-300: #E5E7EB;      /* Borders */
+
+  /* Text */
+  --color-neutral: #1F2937;       /* Charcoal body text */
+
+  /* Feedback */
+  --color-success: #059669;       /* Emerald */
+  --color-error: #DC2626;         /* Red */
+  --color-warning: #D97706;       /* Amber */
+  --color-info: #2563EB;          /* Blue */
 }
 ```
 
 ### Typography
-- **Primary Font**: Righteous (headings)
-- **Secondary Font**: Helvetica (body text)
+- **Headings**: Montserrat (weights 700-900) - bold, uppercase, tight tracking
+- **Body**: Inter (weights 400-600) - clean, modern, highly readable
 
 ### Design Principles
-- Mobile-first responsive design
-- High contrast for outdoor/bright viewing
-- Bold, athletic aesthetic matching football culture
-- Smooth animations for score updates
-- Dark theme with neon yellow accents
+- **Light mode** - clean white backgrounds
+- **Minimalist** - functional, no unnecessary decoration
+- **Premium sports aesthetic** - bold typography, sharp edges
+- **Mobile-first** responsive design
+- **Subtle interactions** - border color changes on hover
+- **Strong hierarchy** - clear visual distinction between elements
 
 ### DaisyUI Custom Theme
 ```javascript
-module.exports = {
-  daisyui: {
-    themes: [{
-      cashcup: {
-        "primary": "#DBFF00",
-        "secondary": "#000000",
-        "accent": "#DBFF00",
-        "neutral": "#1A1A1A",
-        "base-100": "#000000",
-        "info": "#3B82F6",
-        "success": "#10B981",
-        "warning": "#F59E0B",
-        "error": "#EF4444",
-      }
-    }]
-  }
+// Defined in globals.css using @plugin "daisyui/theme"
+{
+  name: "cashcup",
+  prefersdark: false,
+  color-scheme: "light",
+
+  "--color-primary": "#ff4d00",
+  "--color-primary-content": "#ffffff",
+  "--color-secondary": "#0a0a0a",
+  "--color-secondary-content": "#ffffff",
+  "--color-base-100": "#ffffff",
+  "--color-base-200": "#f8f9fa",
+  "--color-base-300": "#e5e7eb",
+  "--color-base-content": "#0a0a0a",
+  "--color-neutral": "#1f2937",
+  "--color-success": "#059669",
+  "--color-error": "#dc2626",
+  "--color-warning": "#d97706",
+  "--color-info": "#2563eb",
+
+  "--radius-selector": "0.25rem",
+  "--radius-field": "0.25rem",
+  "--radius-box": "0.5rem"
 }
 ```
+
+### CSS Utility Classes
+- `.font-heading` - Montserrat, uppercase, bold (for headings)
+- `.font-body` - Inter, regular (for body text)
+- `.stat-card` - Bordered card with hover effect
 
 ## Features to Build
 

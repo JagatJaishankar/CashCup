@@ -10,146 +10,121 @@ export default function LoginPage() {
 
   const handleSendOTP = (e) => {
     e.preventDefault();
-    // Send OTP logic here
     setOtpSent(true);
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Verify OTP and login logic here
     console.log("Login with:", email, otp);
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-base-100 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="font-righteous text-5xl mb-2">
-            <span className="text-primary">CASH CUP</span>
+          <h1 className="font-heading text-4xl text-secondary mb-2">
+            Cash <span className="text-primary">Cup</span>
           </h1>
-          <h2 className="font-righteous text-3xl mb-4">LOGIN</h2>
-          <p className="font-helvetica text-gray-600">
+          <h2 className="font-heading text-2xl text-secondary mb-4">Login</h2>
+          <p className="font-body text-neutral/60">
             Enter your email to receive a one-time password
           </p>
         </div>
 
         {/* Login Form */}
-        <div className="card bg-base-100 shadow-2xl border-2 border-base-300">
-          <div className="card-body">
-            {!otpSent ? (
-              <form onSubmit={handleSendOTP} className="space-y-4">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-helvetica font-semibold">Email Address</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="input input-bordered font-helvetica"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
+        <div className="bg-base-100 border border-base-300 p-6">
+          {!otpSent ? (
+            <form onSubmit={handleSendOTP} className="space-y-4">
+              <div>
+                <label className="block font-body text-sm text-neutral/70 mb-2">Email Address</label>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 border border-base-300 font-body text-sm focus:border-primary focus:outline-none"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
 
-                <button type="submit" className="btn btn-primary btn-block font-righteous">
-                  Send OTP
-                </button>
-              </form>
-            ) : (
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div className="alert alert-success">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                  <span className="font-helvetica">OTP sent to {email}</span>
-                </div>
+              <button type="submit" className="btn btn-primary w-full font-heading text-sm">
+                Send OTP
+              </button>
+            </form>
+          ) : (
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div className="bg-success/10 text-success p-4 font-body text-sm">
+                OTP sent to {email}
+              </div>
 
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-helvetica font-semibold">Enter OTP</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="123456"
-                    className="input input-bordered font-helvetica text-center text-2xl tracking-widest"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    maxLength={6}
-                    required
-                  />
-                </div>
+              <div>
+                <label className="block font-body text-sm text-neutral/70 mb-2">Enter OTP</label>
+                <input
+                  type="text"
+                  placeholder="123456"
+                  className="w-full px-4 py-3 border border-base-300 font-heading text-xl text-center tracking-widest focus:border-primary focus:outline-none"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  maxLength={6}
+                  required
+                />
+              </div>
 
-                <button type="submit" className="btn btn-primary btn-block font-righteous">
-                  Verify & Login
-                </button>
+              <button type="submit" className="btn btn-primary w-full font-heading text-sm">
+                Verify & Login
+              </button>
 
-                <button
-                  type="button"
-                  className="btn btn-ghost btn-block btn-sm font-helvetica"
-                  onClick={() => setOtpSent(false)}
-                >
-                  Change Email
-                </button>
-              </form>
-            )}
+              <button
+                type="button"
+                className="w-full text-center font-body text-sm text-neutral/50 hover:text-primary"
+                onClick={() => setOtpSent(false)}
+              >
+                Change Email
+              </button>
+            </form>
+          )}
 
-            <div className="divider font-helvetica">OR</div>
+          <div className="border-t border-base-300 my-6"></div>
 
-            <div className="text-center font-helvetica">
-              <p className="text-gray-600">
-                Don't have an account?{" "}
-                <Link href="/signup" className="text-primary font-semibold hover:underline">
-                  Sign Up
-                </Link>
-              </p>
-            </div>
+          <div className="text-center font-body text-sm">
+            <p className="text-neutral/60">
+              Don't have an account?{" "}
+              <Link href="/signup" className="text-primary font-medium hover:underline">
+                Sign Up
+              </Link>
+            </p>
           </div>
         </div>
 
-        {/* Demo Access - For Testing/Presentation */}
-        <div className="card bg-base-200 shadow-xl border-2 border-primary mt-6">
-          <div className="card-body">
-            <h3 className="card-title font-righteous text-primary text-center justify-center">
-              DEMO ACCESS
-            </h3>
-            <p className="text-center text-gray-400 font-helvetica text-sm mb-4">
-              Quick access for testing and presentation
-            </p>
+        {/* Demo Access */}
+        <div className="bg-base-200 border border-base-300 p-6 mt-6">
+          <h3 className="font-heading text-sm text-secondary text-center mb-4">
+            Demo Access
+          </h3>
+          <p className="text-center text-neutral/50 font-body text-xs mb-4">
+            Quick access for testing
+          </p>
 
-            <div className="grid grid-cols-1 gap-3">
-              <Link
-                href="/dashboard"
-                className="btn btn-outline btn-primary font-righteous"
-              >
-                Login as Player
-              </Link>
-              <Link
-                href="/manager"
-                className="btn btn-outline btn-primary font-righteous"
-              >
-                Login as Manager
-              </Link>
-              <Link
-                href="/admin"
-                className="btn btn-outline btn-primary font-righteous"
-              >
-                Login as Admin
-              </Link>
-              <Link
-                href="/sitemap"
-                className="btn btn-ghost btn-sm font-helvetica"
-              >
-                View All Pages
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 gap-3">
+            <Link href="/dashboard" className="btn btn-outline btn-sm font-heading text-xs">
+              Login as Player
+            </Link>
+            <Link href="/manager" className="btn btn-outline btn-sm font-heading text-xs">
+              Login as Manager
+            </Link>
+            <Link href="/admin" className="btn btn-outline btn-sm font-heading text-xs">
+              Login as Admin
+            </Link>
+            <Link href="/sitemap" className="text-center font-body text-xs text-neutral/50 hover:text-primary mt-2">
+              View All Pages
+            </Link>
           </div>
         </div>
 
         {/* Info */}
         <div className="mt-8 text-center">
-          <p className="font-helvetica text-sm text-gray-400">
+          <p className="font-body text-xs text-neutral/40">
             By logging in, you agree to our Terms of Service and Privacy Policy
           </p>
         </div>

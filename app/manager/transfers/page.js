@@ -73,38 +73,38 @@ export default function ManagerTransfersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <Link href="/manager" className="btn btn-ghost btn-sm text-primary mb-4">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary mb-4 uppercase">
             TRANSFER MANAGEMENT
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Manage incoming and outgoing player transfers
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
         {/* Tabs */}
-        <div className="tabs tabs-boxed bg-base-200 mb-8">
+        <div className="tabs tabs-boxed bg-base-200 border border-base-300 mb-8">
           <button
-            className={`tab font-righteous ${activeTab === 'incoming' ? 'tab-active' : ''}`}
+            className={`tab font-heading uppercase ${activeTab === 'incoming' ? 'tab-active' : ''}`}
             onClick={() => setActiveTab('incoming')}
           >
             Incoming Offers ({incomingOffers.length})
           </button>
           <button
-            className={`tab font-righteous ${activeTab === 'outgoing' ? 'tab-active' : ''}`}
+            className={`tab font-heading uppercase ${activeTab === 'outgoing' ? 'tab-active' : ''}`}
             onClick={() => setActiveTab('outgoing')}
           >
             Outgoing Offers ({outgoingOffers.length})
           </button>
           <button
-            className={`tab font-righteous ${activeTab === 'completed' ? 'tab-active' : ''}`}
+            className={`tab font-heading uppercase ${activeTab === 'completed' ? 'tab-active' : ''}`}
             onClick={() => setActiveTab('completed')}
           >
             Completed
@@ -115,12 +115,12 @@ export default function ManagerTransfersPage() {
         {activeTab === 'incoming' && (
           <div className="space-y-4">
             {incomingOffers.map(offer => (
-              <div key={offer.id} className="card bg-base-200 shadow-xl border-2 border-base-300 hover:border-primary transition-all">
+              <div key={offer.id} className="card bg-base-100 shadow-sm border border-base-300 hover:border-primary transition-all">
                 <div className="card-body">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="font-righteous text-2xl text-white">{offer.player}</h3>
+                        <h3 className="font-heading text-2xl text-secondary uppercase">{offer.player}</h3>
                         <span className="badge badge-outline text-primary border-primary">
                           {offer.position}
                         </span>
@@ -129,34 +129,34 @@ export default function ManagerTransfersPage() {
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 font-helvetica">
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 font-body">
                         <div>
-                          <p className="text-gray-400 text-sm">Current Team</p>
-                          <p className="text-white">{offer.currentTeam}</p>
+                          <p className="text-neutral/60 text-sm">Current Team</p>
+                          <p className="text-secondary">{offer.currentTeam}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Transfer Fee</p>
-                          <p className="text-primary font-righteous">{offer.fee}</p>
+                          <p className="text-neutral/60 text-sm">Transfer Fee</p>
+                          <p className="text-primary font-heading">{offer.fee}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Salary Request</p>
-                          <p className="text-primary font-righteous">{offer.salary}</p>
+                          <p className="text-neutral/60 text-sm">Salary Request</p>
+                          <p className="text-primary font-heading">{offer.salary}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Offer Date</p>
-                          <p className="text-white">{offer.date}</p>
+                          <p className="text-neutral/60 text-sm">Offer Date</p>
+                          <p className="text-secondary">{offer.date}</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <button className="btn btn-sm btn-success font-righteous">
+                      <button className="btn btn-sm btn-success font-heading uppercase">
                         Accept Offer
                       </button>
-                      <button className="btn btn-sm btn-outline btn-primary font-righteous">
+                      <button className="btn btn-sm btn-outline btn-primary font-heading uppercase">
                         Negotiate
                       </button>
-                      <button className="btn btn-sm btn-outline text-error hover:bg-error hover:text-white hover:border-error font-righteous">
+                      <button className="btn btn-sm btn-outline text-error hover:bg-error hover:text-white hover:border-error font-heading uppercase">
                         Reject
                       </button>
                     </div>
@@ -166,12 +166,12 @@ export default function ManagerTransfersPage() {
             ))}
 
             {incomingOffers.length === 0 && (
-              <div className="text-center py-20 bg-base-200 rounded-lg">
-                <svg className="w-24 h-24 mx-auto text-gray-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <div className="text-center py-20 bg-base-200 rounded-lg border border-base-300">
+                <svg className="w-24 h-24 mx-auto text-neutral/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                 </svg>
-                <h3 className="font-righteous text-2xl text-white mb-2">No Incoming Offers</h3>
-                <p className="font-helvetica text-gray-400">You don't have any pending transfer offers</p>
+                <h3 className="font-heading text-2xl text-secondary mb-2 uppercase">No Incoming Offers</h3>
+                <p className="font-body text-neutral/60">You don't have any pending transfer offers</p>
               </div>
             )}
           </div>
@@ -181,12 +181,12 @@ export default function ManagerTransfersPage() {
         {activeTab === 'outgoing' && (
           <div className="space-y-4">
             {outgoingOffers.map(offer => (
-              <div key={offer.id} className="card bg-base-200 shadow-xl border-2 border-base-300 hover:border-primary transition-all">
+              <div key={offer.id} className="card bg-base-100 shadow-sm border border-base-300 hover:border-primary transition-all">
                 <div className="card-body">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="font-righteous text-2xl text-white">{offer.player}</h3>
+                        <h3 className="font-heading text-2xl text-secondary uppercase">{offer.player}</h3>
                         <span className="badge badge-outline text-primary border-primary">
                           {offer.position}
                         </span>
@@ -195,27 +195,27 @@ export default function ManagerTransfersPage() {
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-helvetica">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-body">
                         <div>
-                          <p className="text-gray-400 text-sm">Target Team</p>
-                          <p className="text-white">{offer.targetTeam}</p>
+                          <p className="text-neutral/60 text-sm">Target Team</p>
+                          <p className="text-secondary">{offer.targetTeam}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Asking Fee</p>
-                          <p className="text-primary font-righteous">{offer.fee}</p>
+                          <p className="text-neutral/60 text-sm">Asking Fee</p>
+                          <p className="text-primary font-heading">{offer.fee}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Offer Date</p>
-                          <p className="text-white">{offer.date}</p>
+                          <p className="text-neutral/60 text-sm">Offer Date</p>
+                          <p className="text-secondary">{offer.date}</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <button className="btn btn-sm btn-outline btn-primary font-righteous">
+                      <button className="btn btn-sm btn-outline btn-primary font-heading uppercase">
                         View Details
                       </button>
-                      <button className="btn btn-sm btn-outline text-error hover:bg-error hover:text-white hover:border-error font-righteous">
+                      <button className="btn btn-sm btn-outline text-error hover:bg-error hover:text-white hover:border-error font-heading uppercase">
                         Cancel Offer
                       </button>
                     </div>
@@ -224,7 +224,7 @@ export default function ManagerTransfersPage() {
               </div>
             ))}
 
-            <button className="btn btn-primary btn-block font-righteous">
+            <button className="btn btn-primary btn-block font-heading uppercase">
               + List Player for Transfer
             </button>
           </div>
@@ -234,12 +234,12 @@ export default function ManagerTransfersPage() {
         {activeTab === 'completed' && (
           <div className="space-y-4">
             {completedTransfers.map(transfer => (
-              <div key={transfer.id} className="card bg-base-200 shadow-xl border-2 border-base-300">
+              <div key={transfer.id} className="card bg-base-100 shadow-sm border border-base-300">
                 <div className="card-body">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="font-righteous text-2xl text-white">{transfer.player}</h3>
+                        <h3 className="font-heading text-2xl text-secondary uppercase">{transfer.player}</h3>
                         <span className="badge badge-outline text-primary border-primary">
                           {transfer.position}
                         </span>
@@ -248,25 +248,25 @@ export default function ManagerTransfersPage() {
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-helvetica">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-body">
                         <div>
-                          <p className="text-gray-400 text-sm">
+                          <p className="text-neutral/60 text-sm">
                             {transfer.type === 'incoming' ? 'From' : 'To'}
                           </p>
-                          <p className="text-white">{transfer.from || transfer.to}</p>
+                          <p className="text-secondary">{transfer.from || transfer.to}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Transfer Fee</p>
-                          <p className="text-primary font-righteous">{transfer.fee}</p>
+                          <p className="text-neutral/60 text-sm">Transfer Fee</p>
+                          <p className="text-primary font-heading">{transfer.fee}</p>
                         </div>
                         <div>
-                          <p className="text-gray-400 text-sm">Completed Date</p>
-                          <p className="text-white">{transfer.date}</p>
+                          <p className="text-neutral/60 text-sm">Completed Date</p>
+                          <p className="text-secondary">{transfer.date}</p>
                         </div>
                       </div>
                     </div>
 
-                    <button className="btn btn-sm btn-outline btn-primary font-righteous">
+                    <button className="btn btn-sm btn-outline btn-primary font-heading uppercase">
                       View Contract
                     </button>
                   </div>

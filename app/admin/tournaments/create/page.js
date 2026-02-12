@@ -30,40 +30,40 @@ export default function CreateTournamentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4 font-body">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase font-bold mb-4">
             CREATE TOURNAMENT
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Set up a new tournament event
           </p>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto py-8 md:py-12">
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Information */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Basic Information
               </h2>
 
               <div className="space-y-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Tournament Name *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Tournament Name *</span>
                   </label>
                   <input
                     type="text"
                     name="name"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="e.g., Cash Cup 5v5 Championship"
@@ -72,12 +72,12 @@ export default function CreateTournamentPage() {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Description *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Description *</span>
                   </label>
                   <textarea
                     name="description"
                     required
-                    className="textarea textarea-bordered bg-base-100 text-white h-24"
+                    className="textarea textarea-bordered bg-base-100 text-secondary border-base-300 h-24"
                     value={formData.description}
                     onChange={handleChange}
                     placeholder="Describe the tournament..."
@@ -87,12 +87,12 @@ export default function CreateTournamentPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Format *</span>
+                      <span className="label-text text-secondary font-body font-semibold">Format *</span>
                     </label>
                     <select
                       name="format"
                       required
-                      className="select select-bordered bg-base-100 text-white"
+                      className="select select-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.format}
                       onChange={handleChange}
                     >
@@ -104,13 +104,13 @@ export default function CreateTournamentPage() {
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Venue *</span>
+                      <span className="label-text text-secondary font-body font-semibold">Venue *</span>
                     </label>
                     <input
                       type="text"
                       name="venue"
                       required
-                      className="input input-bordered bg-base-100 text-white"
+                      className="input input-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.venue}
                       onChange={handleChange}
                       placeholder="e.g., Al-Hamra Sports Complex"
@@ -122,22 +122,22 @@ export default function CreateTournamentPage() {
           </div>
 
           {/* Dates and Registration */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Dates & Registration
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Start Date *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Start Date *</span>
                   </label>
                   <input
                     type="date"
                     name="startDate"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.startDate}
                     onChange={handleChange}
                   />
@@ -145,13 +145,13 @@ export default function CreateTournamentPage() {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">End Date *</span>
+                    <span className="label-text text-secondary font-body font-semibold">End Date *</span>
                   </label>
                   <input
                     type="date"
                     name="endDate"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.endDate}
                     onChange={handleChange}
                   />
@@ -159,13 +159,13 @@ export default function CreateTournamentPage() {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Registration Deadline *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Registration Deadline *</span>
                   </label>
                   <input
                     type="date"
                     name="registrationDeadline"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.registrationDeadline}
                     onChange={handleChange}
                   />
@@ -173,7 +173,7 @@ export default function CreateTournamentPage() {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Max Teams *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Max Teams *</span>
                   </label>
                   <input
                     type="number"
@@ -181,7 +181,7 @@ export default function CreateTournamentPage() {
                     required
                     min="4"
                     max="64"
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.maxTeams}
                     onChange={handleChange}
                     placeholder="e.g., 16"
@@ -192,23 +192,23 @@ export default function CreateTournamentPage() {
           </div>
 
           {/* Financial Details */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Financial Details
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Entry Fee (SAR) *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Entry Fee (SAR) *</span>
                   </label>
                   <input
                     type="number"
                     name="entryFee"
                     required
                     min="0"
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.entryFee}
                     onChange={handleChange}
                     placeholder="e.g., 500"
@@ -217,14 +217,14 @@ export default function CreateTournamentPage() {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Prize Pool (SAR) *</span>
+                    <span className="label-text text-secondary font-body font-semibold">Prize Pool (SAR) *</span>
                   </label>
                   <input
                     type="number"
                     name="prizePool"
                     required
                     min="0"
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.prizePool}
                     onChange={handleChange}
                     placeholder="e.g., 10000"
@@ -235,20 +235,20 @@ export default function CreateTournamentPage() {
           </div>
 
           {/* Rules and Contact */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Rules & Contact Information
               </h2>
 
               <div className="space-y-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Tournament Rules</span>
+                    <span className="label-text text-secondary font-body font-semibold">Tournament Rules</span>
                   </label>
                   <textarea
                     name="rules"
-                    className="textarea textarea-bordered bg-base-100 text-white h-32"
+                    className="textarea textarea-bordered bg-base-100 text-secondary border-base-300 h-32"
                     value={formData.rules}
                     onChange={handleChange}
                     placeholder="Enter tournament rules and regulations..."
@@ -258,13 +258,13 @@ export default function CreateTournamentPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Contact Email *</span>
+                      <span className="label-text text-secondary font-body font-semibold">Contact Email *</span>
                     </label>
                     <input
                       type="email"
                       name="contactEmail"
                       required
-                      className="input input-bordered bg-base-100 text-white"
+                      className="input input-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.contactEmail}
                       onChange={handleChange}
                       placeholder="contact@cashcup.com"
@@ -273,13 +273,13 @@ export default function CreateTournamentPage() {
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Contact Phone *</span>
+                      <span className="label-text text-secondary font-body font-semibold">Contact Phone *</span>
                     </label>
                     <input
                       type="tel"
                       name="contactPhone"
                       required
-                      className="input input-bordered bg-base-100 text-white"
+                      className="input input-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.contactPhone}
                       onChange={handleChange}
                       placeholder="+966 50 123 4567"
@@ -292,10 +292,10 @@ export default function CreateTournamentPage() {
 
           {/* Actions */}
           <div className="flex gap-4 justify-end">
-            <Link href="/admin" className="btn btn-outline btn-primary font-righteous">
+            <Link href="/admin" className="btn btn-outline btn-primary font-heading uppercase">
               Cancel
             </Link>
-            <button type="submit" className="btn btn-primary font-righteous">
+            <button type="submit" className="btn btn-primary font-heading uppercase">
               Create Tournament
             </button>
           </div>

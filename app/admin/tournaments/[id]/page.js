@@ -40,18 +40,18 @@ export default function EditTournamentPage({ params }) {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4 font-body">
             ← Back to Dashboard
           </Link>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-2">
+              <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase font-bold mb-2">
                 EDIT TOURNAMENT
               </h1>
-              <p className="font-helvetica text-white">
+              <p className="font-body text-neutral/60">
                 Tournament ID: #{tournamentId}
               </p>
             </div>
@@ -69,21 +69,21 @@ export default function EditTournamentPage({ params }) {
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto py-8 md:py-12">
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Status Update */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Tournament Status
               </h2>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-white font-helvetica font-semibold">Status</span>
+                  <span className="label-text text-secondary font-body font-semibold">Status</span>
                 </label>
                 <select
                   name="status"
-                  className="select select-bordered bg-base-100 text-white"
+                  className="select select-bordered bg-base-100 text-secondary border-base-300"
                   value={formData.status}
                   onChange={handleChange}
                 >
@@ -98,22 +98,22 @@ export default function EditTournamentPage({ params }) {
           </div>
 
           {/* Basic Information */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Basic Information
               </h2>
 
               <div className="space-y-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Tournament Name</span>
+                    <span className="label-text text-secondary font-body font-semibold">Tournament Name</span>
                   </label>
                   <input
                     type="text"
                     name="name"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.name}
                     onChange={handleChange}
                   />
@@ -121,12 +121,12 @@ export default function EditTournamentPage({ params }) {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Description</span>
+                    <span className="label-text text-secondary font-body font-semibold">Description</span>
                   </label>
                   <textarea
                     name="description"
                     required
-                    className="textarea textarea-bordered bg-base-100 text-white h-24"
+                    className="textarea textarea-bordered bg-base-100 text-secondary border-base-300 h-24"
                     value={formData.description}
                     onChange={handleChange}
                   />
@@ -135,12 +135,12 @@ export default function EditTournamentPage({ params }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Format</span>
+                      <span className="label-text text-secondary font-body font-semibold">Format</span>
                     </label>
                     <select
                       name="format"
                       required
-                      className="select select-bordered bg-base-100 text-white"
+                      className="select select-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.format}
                       onChange={handleChange}
                     >
@@ -152,13 +152,13 @@ export default function EditTournamentPage({ params }) {
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Venue</span>
+                      <span className="label-text text-secondary font-body font-semibold">Venue</span>
                     </label>
                     <input
                       type="text"
                       name="venue"
                       required
-                      className="input input-bordered bg-base-100 text-white"
+                      className="input input-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.venue}
                       onChange={handleChange}
                     />
@@ -169,22 +169,22 @@ export default function EditTournamentPage({ params }) {
           </div>
 
           {/* Dates */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Dates & Registration
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Start Date</span>
+                    <span className="label-text text-secondary font-body font-semibold">Start Date</span>
                   </label>
                   <input
                     type="date"
                     name="startDate"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.startDate}
                     onChange={handleChange}
                   />
@@ -192,13 +192,13 @@ export default function EditTournamentPage({ params }) {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">End Date</span>
+                    <span className="label-text text-secondary font-body font-semibold">End Date</span>
                   </label>
                   <input
                     type="date"
                     name="endDate"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.endDate}
                     onChange={handleChange}
                   />
@@ -206,13 +206,13 @@ export default function EditTournamentPage({ params }) {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Registration Deadline</span>
+                    <span className="label-text text-secondary font-body font-semibold">Registration Deadline</span>
                   </label>
                   <input
                     type="date"
                     name="registrationDeadline"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.registrationDeadline}
                     onChange={handleChange}
                   />
@@ -220,13 +220,13 @@ export default function EditTournamentPage({ params }) {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Max Teams</span>
+                    <span className="label-text text-secondary font-body font-semibold">Max Teams</span>
                   </label>
                   <input
                     type="number"
                     name="maxTeams"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.maxTeams}
                     onChange={handleChange}
                   />
@@ -236,22 +236,22 @@ export default function EditTournamentPage({ params }) {
           </div>
 
           {/* Financial */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Financial Details
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Entry Fee (SAR)</span>
+                    <span className="label-text text-secondary font-body font-semibold">Entry Fee (SAR)</span>
                   </label>
                   <input
                     type="number"
                     name="entryFee"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.entryFee}
                     onChange={handleChange}
                   />
@@ -259,13 +259,13 @@ export default function EditTournamentPage({ params }) {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Prize Pool (SAR)</span>
+                    <span className="label-text text-secondary font-body font-semibold">Prize Pool (SAR)</span>
                   </label>
                   <input
                     type="number"
                     name="prizePool"
                     required
-                    className="input input-bordered bg-base-100 text-white"
+                    className="input input-bordered bg-base-100 text-secondary border-base-300"
                     value={formData.prizePool}
                     onChange={handleChange}
                   />
@@ -275,20 +275,20 @@ export default function EditTournamentPage({ params }) {
           </div>
 
           {/* Rules and Contact */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h2 className="card-title font-righteous text-2xl text-white mb-4">
+              <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">
                 Rules & Contact
               </h2>
 
               <div className="space-y-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white font-helvetica font-semibold">Tournament Rules</span>
+                    <span className="label-text text-secondary font-body font-semibold">Tournament Rules</span>
                   </label>
                   <textarea
                     name="rules"
-                    className="textarea textarea-bordered bg-base-100 text-white h-32"
+                    className="textarea textarea-bordered bg-base-100 text-secondary border-base-300 h-32"
                     value={formData.rules}
                     onChange={handleChange}
                   />
@@ -297,13 +297,13 @@ export default function EditTournamentPage({ params }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Contact Email</span>
+                      <span className="label-text text-secondary font-body font-semibold">Contact Email</span>
                     </label>
                     <input
                       type="email"
                       name="contactEmail"
                       required
-                      className="input input-bordered bg-base-100 text-white"
+                      className="input input-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.contactEmail}
                       onChange={handleChange}
                     />
@@ -311,13 +311,13 @@ export default function EditTournamentPage({ params }) {
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white font-helvetica font-semibold">Contact Phone</span>
+                      <span className="label-text text-secondary font-body font-semibold">Contact Phone</span>
                     </label>
                     <input
                       type="tel"
                       name="contactPhone"
                       required
-                      className="input input-bordered bg-base-100 text-white"
+                      className="input input-bordered bg-base-100 text-secondary border-base-300"
                       value={formData.contactPhone}
                       onChange={handleChange}
                     />
@@ -332,15 +332,15 @@ export default function EditTournamentPage({ params }) {
             <button
               type="button"
               onClick={handleDelete}
-              className="btn btn-outline text-error hover:bg-error hover:text-white hover:border-error font-righteous"
+              className="btn btn-outline text-error hover:bg-error hover:text-white hover:border-error font-heading uppercase"
             >
               Delete Tournament
             </button>
             <div className="flex gap-4">
-              <Link href="/admin" className="btn btn-outline btn-primary font-righteous">
+              <Link href="/admin" className="btn btn-outline btn-primary font-heading uppercase">
                 Cancel
               </Link>
-              <button type="submit" className="btn btn-primary font-righteous">
+              <button type="submit" className="btn btn-primary font-heading uppercase">
                 Save Changes
               </button>
             </div>

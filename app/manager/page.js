@@ -75,30 +75,30 @@ export default function ManagerDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-base-100">
       {/* Header */}
-      <section className="bg-secondary text-white py-12">
+      <section className="bg-base-200 border-b border-base-300 py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-2">
+              <h1 className="font-heading text-4xl md:text-5xl text-primary mb-2 uppercase">
                 MANAGER DASHBOARD
               </h1>
-              <p className="font-helvetica text-xl text-gray-300">
+              <p className="font-body text-xl text-neutral/60">
                 Welcome back, {team.manager}!
               </p>
             </div>
-            <Link href="/manager/team" className="btn btn-outline btn-primary font-righteous">
+            <Link href="/manager/team" className="btn btn-outline btn-primary font-heading uppercase">
               Team Settings
             </Link>
           </div>
 
-          <div className="flex gap-4 items-center font-helvetica">
-            <Link href="/teams/1" className="text-primary hover:underline font-righteous text-xl">
+          <div className="flex gap-4 items-center font-body">
+            <Link href="/teams/1" className="text-primary hover:underline font-heading text-xl uppercase">
               {team.name}
             </Link>
-            <span className="text-gray-300">•</span>
-            <span className="text-gray-300">{team.playerCount} Players</span>
+            <span className="text-neutral/60">•</span>
+            <span className="text-neutral/60">{team.playerCount} Players</span>
           </div>
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function ManagerDashboard() {
           <div className="lg:col-span-2 space-y-8">
             {/* Team Stats */}
             <div>
-              <h2 className="font-righteous text-2xl mb-6">
+              <h2 className="font-heading text-2xl mb-6 text-secondary uppercase">
                 TEAM <span className="text-primary">STATISTICS</span>
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -123,7 +123,7 @@ export default function ManagerDashboard() {
             {/* Upcoming Matches */}
             <div>
               <div className="flex justify-between items-center mb-6">
-                <h2 className="font-righteous text-2xl text-white">
+                <h2 className="font-heading text-2xl text-secondary uppercase">
                   UPCOMING <span className="text-primary">MATCHES</span>
                 </h2>
                 <Link href="/manager/tournaments" className="btn btn-ghost btn-sm text-primary">
@@ -138,8 +138,8 @@ export default function ManagerDashboard() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 bg-base-200 rounded-lg">
-                  <p className="font-helvetica text-gray-500">No upcoming matches</p>
+                <div className="text-center py-12 bg-base-200 rounded-lg border border-base-300">
+                  <p className="font-body text-neutral/60">No upcoming matches</p>
                 </div>
               )}
             </div>
@@ -147,7 +147,7 @@ export default function ManagerDashboard() {
             {/* Team Roster */}
             <div>
               <div className="flex justify-between items-center mb-6">
-                <h2 className="font-righteous text-2xl text-white">
+                <h2 className="font-heading text-2xl text-secondary uppercase">
                   TEAM <span className="text-primary">ROSTER</span>
                 </h2>
                 <Link href="/manager/roster" className="btn btn-ghost btn-sm text-primary">
@@ -162,17 +162,17 @@ export default function ManagerDashboard() {
               </div>
 
               <div className="text-center mt-6">
-                <Link href="/manager/roster" className="btn btn-outline btn-primary font-righteous">
+                <Link href="/manager/roster" className="btn btn-outline btn-primary font-heading uppercase">
                   Add Players
                 </Link>
               </div>
             </div>
 
             {/* Pending Transfers */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+            <div className="card bg-base-100 shadow-sm border border-base-300">
               <div className="card-body">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title font-righteous text-2xl text-white">Pending Transfers</h2>
+                  <h2 className="card-title font-heading text-2xl text-secondary uppercase">Pending Transfers</h2>
                   <Link href="/manager/transfers" className="btn btn-ghost btn-sm text-primary">
                     View All
                   </Link>
@@ -181,20 +181,20 @@ export default function ManagerDashboard() {
                 {pendingTransfers.length > 0 ? (
                   <div className="space-y-3">
                     {pendingTransfers.map(transfer => (
-                      <div key={transfer.id} className="flex justify-between items-center p-4 bg-base-200 rounded-lg">
+                      <div key={transfer.id} className="flex justify-between items-center p-4 bg-base-200 rounded-lg border border-base-300">
                         <div>
-                          <h3 className="font-righteous">{transfer.player}</h3>
-                          <p className="font-helvetica text-sm text-gray-400">
+                          <h3 className="font-heading text-secondary uppercase">{transfer.player}</h3>
+                          <p className="font-body text-sm text-neutral/60">
                             From: {transfer.fromTeam}
                           </p>
-                          <p className="font-helvetica text-xs text-gray-500">{transfer.date}</p>
+                          <p className="font-body text-xs text-neutral/60">{transfer.date}</p>
                         </div>
                         <span className="badge badge-warning">Pending</span>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-center py-6 font-helvetica text-gray-500">
+                  <p className="text-center py-6 font-body text-neutral/60">
                     No pending transfers
                   </p>
                 )}
@@ -205,20 +205,20 @@ export default function ManagerDashboard() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Actions */}
-            <div className="card bg-black text-white shadow-xl">
+            <div className="card bg-base-100 shadow-sm border border-base-300">
               <div className="card-body">
-                <h3 className="font-righteous text-xl text-primary mb-4">Quick Actions</h3>
+                <h3 className="font-heading text-xl text-primary mb-4 uppercase">Quick Actions</h3>
                 <div className="space-y-3">
-                  <Link href="/manager/tournaments" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/manager/tournaments" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Register for Tournament
                   </Link>
-                  <Link href="/manager/roster" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/manager/roster" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Manage Roster
                   </Link>
-                  <Link href="/manager/transfers" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/manager/transfers" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Request Transfer
                   </Link>
-                  <Link href="/manager/payments" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/manager/payments" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     View Payments
                   </Link>
                 </div>
@@ -226,14 +226,14 @@ export default function ManagerDashboard() {
             </div>
 
             {/* Tournaments */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+            <div className="card bg-base-100 shadow-sm border border-base-300">
               <div className="card-body">
-                <h3 className="font-righteous text-xl mb-4">Registered Tournaments</h3>
+                <h3 className="font-heading text-xl mb-4 text-secondary uppercase">Registered Tournaments</h3>
                 <div className="space-y-3">
                   {tournaments.map(tournament => (
-                    <div key={tournament.id} className="p-3 bg-base-200 rounded-lg">
-                      <h4 className="font-righteous text-sm">{tournament.name}</h4>
-                      <p className="font-helvetica text-xs text-gray-400">{tournament.startDate}</p>
+                    <div key={tournament.id} className="p-3 bg-base-200 rounded-lg border border-base-300">
+                      <h4 className="font-heading text-sm text-secondary uppercase">{tournament.name}</h4>
+                      <p className="font-body text-xs text-neutral/60">{tournament.startDate}</p>
                       <div className="flex gap-2 mt-2">
                         <span className="badge badge-success badge-xs">Registered</span>
                         <span className="badge badge-success badge-xs">Paid</span>
@@ -241,32 +241,32 @@ export default function ManagerDashboard() {
                     </div>
                   ))}
                 </div>
-                <Link href="/events" className="btn btn-ghost btn-sm text-primary mt-2 font-helvetica">
+                <Link href="/events" className="btn btn-ghost btn-sm text-primary mt-2 font-body">
                   Browse Tournaments
                 </Link>
               </div>
             </div>
 
             {/* Financial Summary */}
-            <div className="card bg-primary shadow-xl">
+            <div className="card bg-primary shadow-sm">
               <div className="card-body">
-                <h3 className="font-righteous text-xl text-black mb-4">Financial Summary</h3>
-                <div className="space-y-2 font-helvetica text-black">
+                <h3 className="font-heading text-xl text-white mb-4 uppercase">Financial Summary</h3>
+                <div className="space-y-2 font-body text-white">
                   <div className="flex justify-between">
                     <span>Entry Fees Paid:</span>
-                    <span className="font-righteous">2,500 SAR</span>
+                    <span className="font-heading">2,500 SAR</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Prize Money Won:</span>
-                    <span className="font-righteous">8,000 SAR</span>
+                    <span className="font-heading">8,000 SAR</span>
                   </div>
-                  <div className="divider my-2"></div>
+                  <div className="divider my-2 before:bg-white/20 after:bg-white/20"></div>
                   <div className="flex justify-between font-semibold">
                     <span>Net Balance:</span>
-                    <span className="font-righteous text-lg">+5,500 SAR</span>
+                    <span className="font-heading text-lg">+5,500 SAR</span>
                   </div>
                 </div>
-                <Link href="/manager/payments" className="btn bg-black text-primary hover:bg-black/90 border-none btn-sm mt-4 font-righteous">
+                <Link href="/manager/payments" className="btn bg-white text-primary hover:bg-white/90 border-none btn-sm mt-4 font-heading uppercase">
                   View Details
                 </Link>
               </div>

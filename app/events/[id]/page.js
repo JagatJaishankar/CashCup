@@ -7,11 +7,10 @@ import { use } from "react";
 export default function EventDetailsPage({ params }) {
   const { id } = use(params);
 
-  // Mock data - would fetch based on id
   const tournament = {
     id: id,
     name: "Cash Cup 5v5 Championship",
-    description: "Elite 5v5 tournament for the best teams in Jeddah. This championship brings together the most skilled players and competitive teams in the region for an unforgettable football experience.",
+    description: "Elite 5v5 tournament bringing together the most skilled players and competitive teams in Jeddah for an unforgettable football experience.",
     status: "registration",
     startDate: "Nov 15, 2024",
     endDate: "Nov 22, 2024",
@@ -31,8 +30,8 @@ export default function EventDetailsPage({ params }) {
       "Matches are 20 minutes (10min halves)",
       "Rolling substitutions allowed",
       "Yellow card = 2 min penalty",
-      "Red card = player sent off, team plays short",
-      "Teams must register minimum 7 days before start"
+      "Red card = player sent off",
+      "Teams must register 7 days before start"
     ]
   };
 
@@ -56,23 +55,31 @@ export default function EventDetailsPage({ params }) {
     }
   ];
 
+  const statusStyles = {
+    registration: "bg-success/10 text-success",
+    upcoming: "bg-info/10 text-info",
+    ongoing: "bg-warning/10 text-warning",
+    completed: "bg-base-200 text-neutral/60"
+  };
+
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-base-100">
       {/* Header */}
-      <section className="bg-secondary text-white py-12">
+      <section className="bg-base-100 py-12 border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/events" className="btn btn-ghost btn-sm text-primary">
-              ← Back to Events
+          <div className="flex items-center gap-4 mb-6">
+            <Link href="/events" className="font-body text-sm text-neutral/50 hover:text-primary transition-colors">
+              Events
             </Link>
-            <span className={`badge ${tournament.status === "registration" ? "badge-success" : "badge-info"} font-helvetica uppercase`}>
+            <span className="text-neutral/30">/</span>
+            <span className={`px-2 py-1 text-xs font-heading uppercase ${statusStyles[tournament.status]}`}>
               {tournament.status}
             </span>
           </div>
-          <h1 className="font-righteous text-4xl md:text-6xl text-primary mb-4">
+          <h1 className="font-heading text-3xl md:text-5xl text-secondary mb-4">
             {tournament.name}
           </h1>
-          <p className="font-helvetica text-xl text-gray-300 max-w-3xl">
+          <p className="font-body text-lg text-neutral/60 max-w-3xl">
             {tournament.description}
           </p>
         </div>
@@ -83,75 +90,66 @@ export default function EventDetailsPage({ params }) {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Tournament Info */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
-              <div className="card-body">
-                <h2 className="card-title font-righteous text-2xl mb-4">Tournament Information</h2>
-
-                <div className="grid grid-cols-2 gap-4 font-helvetica">
-                  <div>
-                    <p className="text-gray-500 text-sm">Start Date</p>
-                    <p className="font-righteous text-lg">{tournament.startDate}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">End Date</p>
-                    <p className="font-righteous text-lg">{tournament.endDate}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">Venue</p>
-                    <p className="font-righteous text-lg">{tournament.venue}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">Format</p>
-                    <p className="font-righteous text-lg">{tournament.format}</p>
-                  </div>
+            <div className="bg-base-100 border border-base-300 p-6">
+              <h2 className="font-heading text-xl text-secondary mb-6">Tournament Details</h2>
+              <div className="grid grid-cols-2 gap-6 font-body">
+                <div>
+                  <p className="text-neutral/40 text-sm mb-1">Start Date</p>
+                  <p className="font-heading text-secondary">{tournament.startDate}</p>
+                </div>
+                <div>
+                  <p className="text-neutral/40 text-sm mb-1">End Date</p>
+                  <p className="font-heading text-secondary">{tournament.endDate}</p>
+                </div>
+                <div>
+                  <p className="text-neutral/40 text-sm mb-1">Venue</p>
+                  <p className="font-heading text-secondary">{tournament.venue}</p>
+                </div>
+                <div>
+                  <p className="text-neutral/40 text-sm mb-1">Format</p>
+                  <p className="font-heading text-secondary">{tournament.format}</p>
                 </div>
               </div>
             </div>
 
             {/* Rules */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
-              <div className="card-body">
-                <h2 className="card-title font-righteous text-2xl mb-4">Tournament Rules</h2>
-                <ul className="space-y-2 font-helvetica">
-                  {tournament.rules.map((rule, index) => (
-                    <li key={index} className="flex gap-2">
-                      <span className="text-primary">✓</span>
-                      <span>{rule}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="bg-base-100 border border-base-300 p-6">
+              <h2 className="font-heading text-xl text-secondary mb-6">Tournament Rules</h2>
+              <ul className="space-y-3 font-body text-neutral/70">
+                {tournament.rules.map((rule, index) => (
+                  <li key={index} className="flex gap-3">
+                    <span className="text-primary font-heading">0{index + 1}</span>
+                    <span>{rule}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Registered Teams */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
-              <div className="card-body">
-                <h2 className="card-title font-righteous text-2xl mb-4">
-                  Registered Teams ({tournament.teamsRegistered}/{tournament.maxTeams})
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {registeredTeams.map(team => (
-                    <Link key={team.id} href={`/teams/${team.id}`}>
-                      <div className="p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-black transition-all cursor-pointer">
-                        <h3 className="font-righteous text-lg">{team.name}</h3>
-                        <p className="font-helvetica text-sm opacity-70">{team.players} players</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+            <div className="bg-base-100 border border-base-300 p-6">
+              <h2 className="font-heading text-xl text-secondary mb-6">
+                Registered Teams ({tournament.teamsRegistered}/{tournament.maxTeams})
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {registeredTeams.map(team => (
+                  <Link key={team.id} href={`/teams/${team.id}`}>
+                    <div className="p-4 border border-base-300 hover:border-primary transition-colors">
+                      <h3 className="font-heading text-secondary">{team.name}</h3>
+                      <p className="font-body text-sm text-neutral/50">{team.players} players</p>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
 
             {/* Fixtures */}
             {matches.length > 0 && (
-              <div className="card bg-base-200 shadow-xl border-2 border-base-300">
-                <div className="card-body">
-                  <h2 className="card-title font-righteous text-2xl mb-4">Fixtures</h2>
-                  <div className="space-y-4">
-                    {matches.map(match => (
-                      <MatchCard key={match.id} match={match} />
-                    ))}
-                  </div>
+              <div className="bg-base-100 border border-base-300 p-6">
+                <h2 className="font-heading text-xl text-secondary mb-6">Fixtures</h2>
+                <div className="space-y-4">
+                  {matches.map(match => (
+                    <MatchCard key={match.id} match={match} />
+                  ))}
                 </div>
               </div>
             )}
@@ -160,65 +158,58 @@ export default function EventDetailsPage({ params }) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Prize Pool */}
-            <div className="card bg-black text-white shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title font-righteous text-primary">Prize Pool</h2>
-                <div className="text-center py-4">
-                  <div className="font-righteous text-5xl text-primary mb-4">
-                    {tournament.prizePool}
+            <div className="bg-secondary text-white p-6">
+              <h2 className="font-heading text-sm text-primary mb-4">Prize Pool</h2>
+              <div className="text-center py-4">
+                <div className="font-heading text-4xl text-white mb-6">
+                  {tournament.prizePool}
+                </div>
+                <div className="space-y-3 font-body text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-primary">1st Place</span>
+                    <span>{tournament.distribution.first}</span>
                   </div>
-                  <div className="divider"></div>
-                  <div className="space-y-2 font-helvetica">
-                    <div className="flex justify-between">
-                      <span className="text-primary">1st Place:</span>
-                      <span>{tournament.distribution.first}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">2nd Place:</span>
-                      <span>{tournament.distribution.second}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">3rd Place:</span>
-                      <span>{tournament.distribution.third}</span>
-                    </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/50">2nd Place</span>
+                    <span>{tournament.distribution.second}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/50">3rd Place</span>
+                    <span>{tournament.distribution.third}</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Registration */}
-            <div className="card bg-base-200 shadow-xl border-2 border-primary">
-              <div className="card-body">
-                <h3 className="font-righteous text-xl mb-2">Entry Fee</h3>
-                <div className="font-righteous text-3xl text-primary mb-4">
-                  {tournament.entryFee}
-                </div>
-                <p className="font-helvetica text-sm text-gray-400 mb-4">
-                  {tournament.maxTeams - tournament.teamsRegistered} spots remaining
-                </p>
-                {tournament.status === "registration" ? (
-                  <button className="btn btn-primary btn-block font-righteous">
-                    Register Your Team
-                  </button>
-                ) : (
-                  <button className="btn btn-disabled btn-block font-righteous">
-                    Registration Closed
-                  </button>
-                )}
+            <div className="bg-base-100 border-2 border-primary p-6">
+              <h3 className="font-heading text-sm text-secondary mb-2">Entry Fee</h3>
+              <div className="font-heading text-3xl text-primary mb-4">
+                {tournament.entryFee}
               </div>
+              <p className="font-body text-sm text-neutral/50 mb-6">
+                {tournament.maxTeams - tournament.teamsRegistered} spots remaining
+              </p>
+              {tournament.status === "registration" ? (
+                <button className="btn btn-primary w-full font-heading text-sm">
+                  Register Your Team
+                </button>
+              ) : (
+                <button className="btn btn-disabled w-full font-heading text-sm">
+                  Registration Closed
+                </button>
+              )}
             </div>
 
             {/* Contact */}
-            <div className="card bg-base-200 shadow-lg">
-              <div className="card-body">
-                <h3 className="font-righteous text-lg mb-2">Need Help?</h3>
-                <p className="font-helvetica text-sm text-gray-400 mb-4">
-                  Contact our team for any questions about the tournament
-                </p>
-                <a href="mailto:cashcup.info@gmail.com" className="btn btn-sm btn-outline font-helvetica">
-                  Contact Support
-                </a>
-              </div>
+            <div className="bg-base-200 p-6">
+              <h3 className="font-heading text-sm text-secondary mb-2">Need Help?</h3>
+              <p className="font-body text-sm text-neutral/50 mb-4">
+                Contact our team for questions about the tournament
+              </p>
+              <a href="mailto:cashcup.info@gmail.com" className="btn btn-outline btn-sm w-full font-body">
+                Contact Support
+              </a>
             </div>
           </div>
         </div>

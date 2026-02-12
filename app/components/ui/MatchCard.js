@@ -5,18 +5,19 @@ export default function MatchCard({ match }) {
   const isCompleted = match.status === "completed";
 
   return (
-    <div className="card bg-base-200 shadow-lg border-2 border-base-300 hover:border-primary transition-all">
-      <div className="card-body p-4">
+    <div className="bg-base-100 border border-base-300 hover:border-primary transition-all">
+      <div className="p-5">
         {/* Status Badge */}
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-xs font-helvetica text-gray-400">{match.tournament}</span>
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-xs font-body text-neutral/50 uppercase tracking-wide">{match.tournament}</span>
           {isLive && (
-            <span className="badge badge-error text-white font-righteous animate-pulse">
-              LIVE
+            <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-error/10 text-error text-xs font-heading">
+              <span className="w-1.5 h-1.5 bg-error rounded-full animate-pulse"></span>
+              Live
             </span>
           )}
           {isCompleted && (
-            <span className="badge badge-neutral font-helvetica text-xs">
+            <span className="px-2 py-1 bg-base-200 text-neutral/60 text-xs font-body">
               Full Time
             </span>
           )}
@@ -26,28 +27,28 @@ export default function MatchCard({ match }) {
         <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
           {/* Home Team */}
           <div className="text-right">
-            <h3 className="font-righteous text-lg text-white">{match.homeTeam}</h3>
+            <h3 className="font-heading text-base text-secondary">{match.homeTeam}</h3>
           </div>
 
           {/* Score */}
-          <div className="bg-black text-primary px-6 py-3 rounded-lg min-w-[100px] text-center border-2 border-primary">
-            <div className="font-righteous text-3xl">
+          <div className="bg-secondary text-white px-5 py-3 min-w-[90px] text-center">
+            <div className="font-heading text-2xl tracking-wide">
               {match.homeScore !== undefined ? match.homeScore : "-"}
-              {" : "}
+              <span className="text-white/40 mx-1">:</span>
               {match.awayScore !== undefined ? match.awayScore : "-"}
             </div>
           </div>
 
           {/* Away Team */}
           <div className="text-left">
-            <h3 className="font-righteous text-lg text-white">{match.awayTeam}</h3>
+            <h3 className="font-heading text-base text-secondary">{match.awayTeam}</h3>
           </div>
         </div>
 
         {/* Match Info */}
-        <div className="text-center mt-2 font-helvetica text-sm text-gray-400">
-          <p>{match.date} • {match.time}</p>
-          {match.venue && <p className="text-xs text-gray-500">{match.venue}</p>}
+        <div className="text-center mt-4 font-body text-sm text-neutral/50">
+          <p>{match.date} &middot; {match.time}</p>
+          {match.venue && <p className="text-xs mt-1">{match.venue}</p>}
         </div>
       </div>
     </div>

@@ -1,16 +1,18 @@
-import { Righteous, Space_Mono } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 
-const righteous = Righteous({
-  weight: "400",
-  variable: "--font-righteous",
+const montserrat = Montserrat({
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const space = Space_Mono({
-  weight: "400",
-  variable: "--font-space",
+const inter = Inter({
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -24,7 +26,7 @@ import Footer from "./components/layout/Footer";
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="cashcup">
-      <body className={`${righteous.variable} ${space.variable} antialiased bg-black min-h-screen flex flex-col`}>
+      <body className={`${montserrat.variable} ${inter.variable} antialiased bg-base-100 text-base-content min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

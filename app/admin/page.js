@@ -58,14 +58,14 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-base-100">
       {/* Header */}
-      <section className="bg-secondary text-white py-12">
+      <section className="bg-base-200 py-12 border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-2">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase font-bold mb-2">
             ADMIN DASHBOARD
           </h1>
-          <p className="font-helvetica text-xl text-gray-300">
+          <p className="font-body text-xl text-neutral/60">
             Platform management and control center
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Platform Stats */}
         <div className="mb-12">
-          <h2 className="font-righteous text-2xl mb-6">
+          <h2 className="font-heading text-2xl uppercase font-bold mb-6 text-secondary">
             PLATFORM <span className="text-primary">OVERVIEW</span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -89,33 +89,33 @@ export default function AdminDashboard() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Pending Transfers */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+            <div className="card bg-base-100 shadow-lg border border-base-300">
               <div className="card-body">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title font-righteous text-2xl text-white">
+                  <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold">
                     Pending <span className="text-primary">Transfers</span>
                   </h2>
-                  <Link href="/admin/transfers" className="btn btn-ghost btn-sm text-primary">
+                  <Link href="/admin/transfers" className="btn btn-ghost btn-sm text-primary font-body">
                     View All
                   </Link>
                 </div>
 
                 <div className="space-y-3">
                   {pendingTransfers.map(transfer => (
-                    <div key={transfer.id} className="p-4 bg-base-200 rounded-lg">
+                    <div key={transfer.id} className="p-4 bg-base-200 rounded-lg border border-base-300">
                       <div className="flex justify-between items-start mb-3">
                         <div>
-                          <h3 className="font-righteous text-lg">{transfer.player}</h3>
-                          <p className="font-helvetica text-sm text-gray-400">
+                          <h3 className="font-heading text-lg uppercase font-bold text-secondary">{transfer.player}</h3>
+                          <p className="font-body text-sm text-neutral/60">
                             {transfer.fromTeam} → {transfer.toTeam}
                           </p>
-                          <p className="font-helvetica text-xs text-gray-500">{transfer.requestDate}</p>
+                          <p className="font-body text-xs text-neutral/60">{transfer.requestDate}</p>
                         </div>
                         <span className="badge badge-warning">Pending</span>
                       </div>
                       <div className="flex gap-2">
-                        <button className="btn btn-success btn-sm font-righteous">Approve</button>
-                        <button className="btn btn-error btn-sm font-righteous">Reject</button>
+                        <button className="btn btn-success btn-sm font-heading uppercase">Approve</button>
+                        <button className="btn btn-error btn-sm font-heading uppercase">Reject</button>
                       </div>
                     </div>
                   ))}
@@ -124,13 +124,13 @@ export default function AdminDashboard() {
             </div>
 
             {/* Active Tournaments */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+            <div className="card bg-base-100 shadow-lg border border-base-300">
               <div className="card-body">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title font-righteous text-2xl text-white">
+                  <h2 className="card-title font-heading text-2xl text-secondary uppercase font-bold">
                     Active <span className="text-primary">Tournaments</span>
                   </h2>
-                  <Link href="/admin/tournaments" className="btn btn-ghost btn-sm text-primary">
+                  <Link href="/admin/tournaments" className="btn btn-ghost btn-sm text-primary font-body">
                     View All
                   </Link>
                 </div>
@@ -138,11 +138,11 @@ export default function AdminDashboard() {
                 <div className="space-y-3">
                   {activeTournaments.map(tournament => (
                     <Link key={tournament.id} href={`/admin/tournaments/${tournament.id}`}>
-                      <div className="p-4 bg-base-200 rounded-lg hover:bg-primary hover:text-black transition-all cursor-pointer">
+                      <div className="p-4 bg-base-200 rounded-lg border border-base-300 hover:border-primary hover:bg-base-100 transition-all cursor-pointer">
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="font-righteous text-lg">{tournament.name}</h3>
-                            <p className="font-helvetica text-sm opacity-80">
+                            <h3 className="font-heading text-lg uppercase font-bold text-secondary">{tournament.name}</h3>
+                            <p className="font-body text-sm text-neutral/60">
                               {tournament.startDate} • {tournament.teams}/{tournament.maxTeams} teams
                             </p>
                           </div>
@@ -155,28 +155,28 @@ export default function AdminDashboard() {
                   ))}
                 </div>
 
-                <Link href="/admin/tournaments/create" className="btn btn-primary btn-block mt-4 font-righteous">
+                <Link href="/admin/tournaments/create" className="btn btn-primary btn-block mt-4 font-heading uppercase">
                   Create New Tournament
                 </Link>
               </div>
             </div>
 
             {/* Recent Activity */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+            <div className="card bg-base-100 shadow-lg border border-base-300">
               <div className="card-body">
-                <h2 className="card-title font-righteous text-2xl mb-4">Recent Activity</h2>
+                <h2 className="card-title font-heading text-2xl uppercase font-bold text-secondary mb-4">Recent Activity</h2>
                 <div className="space-y-2">
                   {recentActivity.map((activity, index) => (
-                    <div key={index} className="flex items-start gap-3 p-3 bg-base-200 rounded-lg">
+                    <div key={index} className="flex items-start gap-3 p-3 bg-base-200 rounded-lg border border-base-300">
                       <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
                       <div className="flex-1">
-                        <p className="font-helvetica">{activity.action}</p>
-                        <p className="font-helvetica text-xs text-gray-500">{activity.time}</p>
+                        <p className="font-body text-secondary">{activity.action}</p>
+                        <p className="font-body text-xs text-neutral/60">{activity.time}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <Link href="/admin/audit" className="btn btn-ghost btn-sm text-primary mt-2">
+                <Link href="/admin/audit" className="btn btn-ghost btn-sm text-primary mt-2 font-body">
                   View Audit Log
                 </Link>
               </div>
@@ -186,23 +186,23 @@ export default function AdminDashboard() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Actions */}
-            <div className="card bg-black text-white shadow-xl">
+            <div className="card bg-base-200 shadow-lg border border-base-300">
               <div className="card-body">
-                <h3 className="font-righteous text-xl text-primary mb-4">Quick Actions</h3>
+                <h3 className="font-heading text-xl text-primary uppercase font-bold mb-4">Quick Actions</h3>
                 <div className="space-y-3">
-                  <Link href="/admin/tournaments/create" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/admin/tournaments/create" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Create Tournament
                   </Link>
-                  <Link href="/admin/scores" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/admin/scores" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Update Scores
                   </Link>
-                  <Link href="/admin/check-in" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/admin/check-in" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Player Check-In
                   </Link>
-                  <Link href="/admin/users" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/admin/users" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Manage Users
                   </Link>
-                  <Link href="/admin/payments" className="btn btn-outline btn-primary btn-block font-righteous">
+                  <Link href="/admin/payments" className="btn btn-outline btn-primary btn-block font-heading uppercase">
                     Payment Management
                   </Link>
                 </div>
@@ -210,24 +210,24 @@ export default function AdminDashboard() {
             </div>
 
             {/* System Status */}
-            <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+            <div className="card bg-base-100 shadow-lg border border-base-300">
               <div className="card-body">
-                <h3 className="font-righteous text-xl mb-4">System Status</h3>
-                <div className="space-y-3 font-helvetica text-sm">
+                <h3 className="font-heading text-xl uppercase font-bold text-secondary mb-4">System Status</h3>
+                <div className="space-y-3 font-body text-sm">
                   <div className="flex justify-between items-center">
-                    <span>Platform</span>
+                    <span className="text-secondary">Platform</span>
                     <span className="badge badge-success">Online</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span>Payment Gateway</span>
+                    <span className="text-secondary">Payment Gateway</span>
                     <span className="badge badge-success">Active</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span>Email Service</span>
+                    <span className="text-secondary">Email Service</span>
                     <span className="badge badge-success">Active</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span>Database</span>
+                    <span className="text-secondary">Database</span>
                     <span className="badge badge-success">Healthy</span>
                   </div>
                 </div>
@@ -235,14 +235,14 @@ export default function AdminDashboard() {
             </div>
 
             {/* Support Requests */}
-            <div className="card bg-primary shadow-xl">
+            <div className="card bg-primary shadow-lg">
               <div className="card-body">
-                <h3 className="font-righteous text-xl text-black mb-4">Support Requests</h3>
+                <h3 className="font-heading text-xl text-white uppercase font-bold mb-4">Support Requests</h3>
                 <div className="text-center">
-                  <div className="font-righteous text-5xl text-black mb-2">5</div>
-                  <p className="font-helvetica text-sm text-black/80">Pending tickets</p>
+                  <div className="font-heading text-5xl text-white mb-2">5</div>
+                  <p className="font-body text-sm text-white/80">Pending tickets</p>
                 </div>
-                <Link href="/admin/support" className="btn bg-black text-primary hover:bg-black/90 border-none btn-sm mt-4 font-righteous">
+                <Link href="/admin/support" className="btn bg-white text-primary hover:bg-white/90 border-none btn-sm mt-4 font-heading uppercase">
                   View Tickets
                 </Link>
               </div>

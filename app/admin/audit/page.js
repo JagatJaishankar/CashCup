@@ -94,73 +94,73 @@ export default function AdminAuditPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4 font-body">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase font-bold mb-4">
             AUDIT LOG
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Track all system activities and changes
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
         {/* Activity Summary */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body p-4">
-              <h3 className="text-gray-400 text-xs font-helvetica">Tournament</h3>
-              <p className="text-info text-2xl font-righteous">
+              <h3 className="text-neutral/60 text-xs font-body">Tournament</h3>
+              <p className="text-info text-2xl font-heading font-bold">
                 {auditLogs.filter(l => l.type === 'tournament').length}
               </p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body p-4">
-              <h3 className="text-gray-400 text-xs font-helvetica">Transfer</h3>
-              <p className="text-warning text-2xl font-righteous">
+              <h3 className="text-neutral/60 text-xs font-body">Transfer</h3>
+              <p className="text-warning text-2xl font-heading font-bold">
                 {auditLogs.filter(l => l.type === 'transfer').length}
               </p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body p-4">
-              <h3 className="text-gray-400 text-xs font-helvetica">User</h3>
-              <p className="text-error text-2xl font-righteous">
+              <h3 className="text-neutral/60 text-xs font-body">User</h3>
+              <p className="text-error text-2xl font-heading font-bold">
                 {auditLogs.filter(l => l.type === 'user').length}
               </p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body p-4">
-              <h3 className="text-gray-400 text-xs font-helvetica">Payment</h3>
-              <p className="text-success text-2xl font-righteous">
+              <h3 className="text-neutral/60 text-xs font-body">Payment</h3>
+              <p className="text-success text-2xl font-heading font-bold">
                 {auditLogs.filter(l => l.type === 'payment').length}
               </p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body p-4">
-              <h3 className="text-gray-400 text-xs font-helvetica">Score</h3>
-              <p className="text-primary text-2xl font-righteous">
+              <h3 className="text-neutral/60 text-xs font-body">Score</h3>
+              <p className="text-primary text-2xl font-heading font-bold">
                 {auditLogs.filter(l => l.type === 'score').length}
               </p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body p-4">
-              <h3 className="text-gray-400 text-xs font-helvetica">Settings</h3>
-              <p className="text-secondary text-2xl font-righteous">
+              <h3 className="text-neutral/60 text-xs font-body">Settings</h3>
+              <p className="text-secondary text-2xl font-heading font-bold">
                 {auditLogs.filter(l => l.type === 'settings').length}
               </p>
             </div>
@@ -173,32 +173,32 @@ export default function AdminAuditPage() {
             <input
               type="text"
               placeholder="Search audit logs..."
-              className="input input-bordered bg-base-200 text-white w-full"
+              className="input input-bordered bg-base-100 text-secondary border-base-300 w-full"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="tabs tabs-boxed bg-base-200">
             <button
-              className={`tab font-righteous ${filterType === 'all' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${filterType === 'all' ? 'tab-active' : ''}`}
               onClick={() => setFilterType('all')}
             >
               All
             </button>
             <button
-              className={`tab font-righteous ${filterType === 'tournament' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${filterType === 'tournament' ? 'tab-active' : ''}`}
               onClick={() => setFilterType('tournament')}
             >
               Tournament
             </button>
             <button
-              className={`tab font-righteous ${filterType === 'user' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${filterType === 'user' ? 'tab-active' : ''}`}
               onClick={() => setFilterType('user')}
             >
               User
             </button>
             <button
-              className={`tab font-righteous ${filterType === 'payment' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${filterType === 'payment' ? 'tab-active' : ''}`}
               onClick={() => setFilterType('payment')}
             >
               Payment
@@ -207,33 +207,33 @@ export default function AdminAuditPage() {
         </div>
 
         {/* Audit Log Table */}
-        <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+        <div className="card bg-base-100 shadow-lg border border-base-300">
           <div className="card-body">
             <div className="overflow-x-auto">
               <table className="table w-full">
                 <thead>
-                  <tr className="text-white border-base-300">
-                    <th className="font-righteous">Timestamp</th>
-                    <th className="font-righteous">User</th>
-                    <th className="font-righteous">Action</th>
-                    <th className="font-righteous">Type</th>
-                    <th className="font-righteous">Details</th>
-                    <th className="font-righteous">IP Address</th>
+                  <tr className="text-secondary border-base-300">
+                    <th className="font-heading uppercase">Timestamp</th>
+                    <th className="font-heading uppercase">User</th>
+                    <th className="font-heading uppercase">Action</th>
+                    <th className="font-heading uppercase">Type</th>
+                    <th className="font-heading uppercase">Details</th>
+                    <th className="font-heading uppercase">IP Address</th>
                   </tr>
                 </thead>
-                <tbody className="font-helvetica">
+                <tbody className="font-body">
                   {filteredLogs.map((log) => (
-                    <tr key={log.id} className="hover:bg-base-100 border-base-300">
-                      <td className="text-gray-400 text-sm">{log.timestamp}</td>
-                      <td className="text-white">{log.user}</td>
-                      <td className="text-white font-semibold">{log.action}</td>
+                    <tr key={log.id} className="hover:bg-base-200 border-base-300">
+                      <td className="text-neutral/60 text-sm">{log.timestamp}</td>
+                      <td className="text-secondary">{log.user}</td>
+                      <td className="text-secondary font-semibold">{log.action}</td>
                       <td>
                         <span className={`badge ${getActionBadge(log.type)}`}>
                           {log.type}
                         </span>
                       </td>
-                      <td className="text-gray-400 max-w-xs">{log.details}</td>
-                      <td className="text-gray-400 text-sm font-mono">{log.ipAddress}</td>
+                      <td className="text-neutral/60 max-w-xs">{log.details}</td>
+                      <td className="text-neutral/60 text-sm font-mono">{log.ipAddress}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -242,7 +242,7 @@ export default function AdminAuditPage() {
 
             {filteredLogs.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-400 font-helvetica">No audit logs found matching your criteria</p>
+                <p className="text-neutral/60 font-body">No audit logs found matching your criteria</p>
               </div>
             )}
           </div>
@@ -250,13 +250,13 @@ export default function AdminAuditPage() {
 
         {/* Export Options */}
         <div className="flex flex-wrap justify-center mt-8 gap-4">
-          <button className="btn btn-primary font-righteous">
+          <button className="btn btn-primary font-heading uppercase">
             Export Audit Log
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             Download as CSV
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             Email Report
           </button>
         </div>

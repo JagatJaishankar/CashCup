@@ -50,16 +50,16 @@ export default function SitemapPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white py-12">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <Link href="/" className="btn btn-ghost btn-sm text-primary mb-4">
+          <Link href="/" className="btn btn-ghost btn-sm text-primary mb-4 font-body">
             ← Back to Home
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase mb-4">
             SITE MAP
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Complete navigation guide for Cash Cup platform
           </p>
         </div>
@@ -69,11 +69,9 @@ export default function SitemapPage() {
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {Object.entries(pages).map(([category, links]) => (
-            <div key={category} className="card bg-base-200 shadow-lg border-2 border-base-300">
-              <div className="card-body p-4">
-                <h3 className="text-gray-400 text-xs font-helvetica">{category}</h3>
-                <p className="text-primary text-3xl font-righteous">{links.length}</p>
-              </div>
+            <div key={category} className="bg-base-100 border border-base-300 p-4">
+              <h3 className="text-neutral/60 text-xs font-body uppercase tracking-wide">{category}</h3>
+              <p className="text-primary text-3xl font-heading">{links.length}</p>
             </div>
           ))}
         </div>
@@ -81,69 +79,65 @@ export default function SitemapPage() {
         {/* Pages by Category */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {Object.entries(pages).map(([category, links]) => (
-            <div key={category} className="card bg-base-200 shadow-xl border-2 border-base-300">
-              <div className="card-body">
-                <h2 className="card-title font-righteous text-2xl text-white mb-4">
-                  {category}
-                </h2>
-                <div className="space-y-2">
-                  {links.map((link) => (
-                    <Link
-                      key={link.path}
-                      href={link.path}
-                      className="flex items-center justify-between p-3 bg-base-100 rounded-lg hover:bg-base-300 hover:border-primary border-2 border-transparent transition-all group"
+            <div key={category} className="bg-base-100 border border-base-300 p-6">
+              <h2 className="font-heading text-2xl text-secondary uppercase mb-4">
+                {category}
+              </h2>
+              <div className="space-y-2">
+                {links.map((link) => (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className="flex items-center justify-between p-3 bg-base-200 hover:bg-base-300 hover:border-primary border border-transparent transition-all group"
+                  >
+                    <span className="font-body text-secondary group-hover:text-primary">
+                      {link.name}
+                    </span>
+                    <svg
+                      className="w-5 h-5 text-neutral/60 group-hover:text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <span className="font-helvetica text-white group-hover:text-primary">
-                        {link.name}
-                      </span>
-                      <svg
-                        className="w-5 h-5 text-gray-400 group-hover:text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </Link>
-                  ))}
-                </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                ))}
               </div>
             </div>
           ))}
         </div>
 
         {/* Instructions */}
-        <div className="card bg-primary text-black shadow-xl border-2 border-primary mt-8">
-          <div className="card-body">
-            <h3 className="card-title font-righteous text-2xl">
-              Demo Instructions
-            </h3>
-            <div className="font-helvetica space-y-2">
-              <p><strong>For Presentation:</strong></p>
-              <ul className="list-disc list-inside space-y-1 ml-4">
-                <li>Start with the <Link href="/" className="underline font-bold">Home Page</Link> to show the landing experience</li>
-                <li>Browse <Link href="/events" className="underline font-bold">Events</Link>, <Link href="/players" className="underline font-bold">Players</Link>, and <Link href="/teams" className="underline font-bold">Teams</Link></li>
-                <li>Show <Link href="/login" className="underline font-bold">Login Page</Link> with role selection</li>
-                <li>Demonstrate each dashboard:
-                  <ul className="list-circle list-inside ml-6">
-                    <li><Link href="/dashboard" className="underline font-bold">Player Dashboard</Link> - 5 sub-pages</li>
-                    <li><Link href="/manager" className="underline font-bold">Manager Dashboard</Link> - 7 sub-pages</li>
-                    <li><Link href="/admin" className="underline font-bold">Admin Dashboard</Link> - 9 sub-pages</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+        <div className="bg-primary text-secondary p-6 mt-8">
+          <h3 className="font-heading text-2xl uppercase mb-4">
+            Demo Instructions
+          </h3>
+          <div className="font-body space-y-2">
+            <p><strong>For Presentation:</strong></p>
+            <ul className="list-disc list-inside space-y-1 ml-4">
+              <li>Start with the <Link href="/" className="underline font-bold">Home Page</Link> to show the landing experience</li>
+              <li>Browse <Link href="/events" className="underline font-bold">Events</Link>, <Link href="/players" className="underline font-bold">Players</Link>, and <Link href="/teams" className="underline font-bold">Teams</Link></li>
+              <li>Show <Link href="/login" className="underline font-bold">Login Page</Link> with role selection</li>
+              <li>Demonstrate each dashboard:
+                <ul className="list-circle list-inside ml-6">
+                  <li><Link href="/dashboard" className="underline font-bold">Player Dashboard</Link> - 5 sub-pages</li>
+                  <li><Link href="/manager" className="underline font-bold">Manager Dashboard</Link> - 7 sub-pages</li>
+                  <li><Link href="/admin" className="underline font-bold">Admin Dashboard</Link> - 9 sub-pages</li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Back to Login */}
         <div className="flex justify-center mt-8">
-          <Link href="/login" className="btn btn-primary btn-lg font-righteous">
+          <Link href="/login" className="btn btn-primary btn-lg font-heading uppercase">
             Back to Demo Login
           </Link>
         </div>

@@ -46,40 +46,40 @@ export default function AdminAnalyticsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4 font-body">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase font-bold mb-4">
             PLATFORM ANALYTICS
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Comprehensive insights and performance metrics
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto py-8 md:py-12 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 space-y-8">
         {/* Time Range Selector */}
         <div className="flex justify-between items-center">
-          <h2 className="font-righteous text-2xl text-white">Overview</h2>
+          <h2 className="font-heading text-2xl text-secondary uppercase font-bold">Overview</h2>
           <div className="tabs tabs-boxed bg-base-200">
             <button
-              className={`tab font-righteous ${timeRange === 'week' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${timeRange === 'week' ? 'tab-active' : ''}`}
               onClick={() => setTimeRange('week')}
             >
               Week
             </button>
             <button
-              className={`tab font-righteous ${timeRange === 'month' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${timeRange === 'month' ? 'tab-active' : ''}`}
               onClick={() => setTimeRange('month')}
             >
               Month
             </button>
             <button
-              className={`tab font-righteous ${timeRange === 'year' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${timeRange === 'year' ? 'tab-active' : ''}`}
               onClick={() => setTimeRange('year')}
             >
               Year
@@ -102,13 +102,13 @@ export default function AdminAnalyticsPage() {
         {/* User Growth & Revenue Breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* User Growth Chart */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">User Growth Trend</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">User Growth Trend</h3>
               <div className="space-y-3">
                 {userGrowth.map((data, index) => (
                   <div key={index} className="flex items-center gap-4">
-                    <span className="text-gray-400 font-helvetica w-12">{data.month}</span>
+                    <span className="text-neutral/60 font-body w-12">{data.month}</span>
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
                         <progress
@@ -116,7 +116,7 @@ export default function AdminAnalyticsPage() {
                           value={data.users}
                           max={Math.max(...userGrowth.map(u => u.users))}
                         ></progress>
-                        <span className="text-primary font-righteous text-lg min-w-[60px] text-right">
+                        <span className="text-primary font-heading text-lg font-bold min-w-[60px] text-right">
                           {data.users}
                         </span>
                       </div>
@@ -128,15 +128,15 @@ export default function AdminAnalyticsPage() {
           </div>
 
           {/* Revenue Breakdown */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Revenue Breakdown</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">Revenue Breakdown</h3>
               <div className="space-y-4">
                 {revenueBreakdown.map((item, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-white font-helvetica">{item.source}</span>
-                      <span className="text-primary font-righteous">{item.amount}</span>
+                      <span className="text-secondary font-body">{item.source}</span>
+                      <span className="text-primary font-heading font-bold">{item.amount}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <progress
@@ -144,7 +144,7 @@ export default function AdminAnalyticsPage() {
                         value={item.percentage}
                         max={100}
                       ></progress>
-                      <span className="text-gray-400 font-helvetica text-sm w-12 text-right">
+                      <span className="text-neutral/60 font-body text-sm w-12 text-right">
                         {item.percentage}%
                       </span>
                     </div>
@@ -158,14 +158,14 @@ export default function AdminAnalyticsPage() {
         {/* Tournament Performance & Top Teams */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Tournament Performance */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Tournament Performance</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">Tournament Performance</h3>
               <div className="space-y-3">
                 {tournamentStats.map((tournament, index) => (
-                  <div key={index} className="p-4 bg-base-100 rounded-lg border border-base-300 hover:border-primary transition-all">
+                  <div key={index} className="p-4 bg-base-200 rounded-lg border border-base-300 hover:border-primary transition-all">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-white font-helvetica font-semibold">{tournament.name}</h4>
+                      <h4 className="text-secondary font-body font-semibold">{tournament.name}</h4>
                       <span className={`badge ${
                         tournament.status === 'ongoing' ? 'badge-success' :
                         tournament.status === 'upcoming' ? 'badge-info' :
@@ -175,10 +175,10 @@ export default function AdminAnalyticsPage() {
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-400 font-helvetica">
+                      <span className="text-neutral/60 font-body">
                         {tournament.participants} teams
                       </span>
-                      <span className="text-primary font-righteous">
+                      <span className="text-primary font-heading font-bold">
                         {tournament.revenue}
                       </span>
                     </div>
@@ -189,27 +189,27 @@ export default function AdminAnalyticsPage() {
           </div>
 
           {/* Top Teams */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Top Performing Teams</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">Top Performing Teams</h3>
               <div className="space-y-3">
                 {topTeams.map((team) => (
-                  <div key={team.rank} className="flex items-center gap-4 p-3 bg-base-100 rounded-lg">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-righteous text-lg ${
-                      team.rank === 1 ? 'bg-primary text-black' :
-                      team.rank === 2 ? 'bg-gray-400 text-black' :
-                      team.rank === 3 ? 'bg-warning text-black' :
-                      'bg-base-300 text-white'
+                  <div key={team.rank} className="flex items-center gap-4 p-3 bg-base-200 rounded-lg border border-base-300">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-heading text-lg font-bold ${
+                      team.rank === 1 ? 'bg-primary text-white' :
+                      team.rank === 2 ? 'bg-gray-400 text-white' :
+                      team.rank === 3 ? 'bg-warning text-white' :
+                      'bg-base-300 text-secondary'
                     }`}>
                       {team.rank}
                     </div>
                     <div className="flex-1">
-                      <p className="text-white font-helvetica font-semibold">{team.team}</p>
-                      <p className="text-gray-400 text-sm font-helvetica">{team.wins} wins</p>
+                      <p className="text-secondary font-body font-semibold">{team.team}</p>
+                      <p className="text-neutral/60 text-sm font-body">{team.wins} wins</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-primary font-righteous">{team.revenue}</p>
-                      <p className="text-gray-400 text-xs font-helvetica">Revenue</p>
+                      <p className="text-primary font-heading font-bold">{team.revenue}</p>
+                      <p className="text-neutral/60 text-xs font-body">Revenue</p>
                     </div>
                   </div>
                 ))}
@@ -219,33 +219,33 @@ export default function AdminAnalyticsPage() {
         </div>
 
         {/* System Health */}
-        <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+        <div className="card bg-base-100 shadow-lg border border-base-300">
           <div className="card-body">
-            <h3 className="card-title font-righteous text-2xl text-white mb-4">System Health</h3>
+            <h3 className="card-title font-heading text-2xl text-secondary uppercase font-bold mb-4">System Health</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="radial-progress text-success" style={{"--value": 95, "--size": "6rem"}} role="progressbar">
                   95%
                 </div>
-                <p className="text-gray-400 font-helvetica mt-2">Server Uptime</p>
+                <p className="text-neutral/60 font-body mt-2">Server Uptime</p>
               </div>
               <div className="text-center">
                 <div className="radial-progress text-primary" style={{"--value": 82, "--size": "6rem"}} role="progressbar">
                   82%
                 </div>
-                <p className="text-gray-400 font-helvetica mt-2">User Satisfaction</p>
+                <p className="text-neutral/60 font-body mt-2">User Satisfaction</p>
               </div>
               <div className="text-center">
                 <div className="radial-progress text-info" style={{"--value": 78, "--size": "6rem"}} role="progressbar">
                   78%
                 </div>
-                <p className="text-gray-400 font-helvetica mt-2">API Performance</p>
+                <p className="text-neutral/60 font-body mt-2">API Performance</p>
               </div>
               <div className="text-center">
                 <div className="radial-progress text-warning" style={{"--value": 68, "--size": "6rem"}} role="progressbar">
                   68%
                 </div>
-                <p className="text-gray-400 font-helvetica mt-2">Database Health</p>
+                <p className="text-neutral/60 font-body mt-2">Database Health</p>
               </div>
             </div>
           </div>
@@ -253,13 +253,13 @@ export default function AdminAnalyticsPage() {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 justify-center">
-          <button className="btn btn-primary font-righteous">
+          <button className="btn btn-primary font-heading uppercase">
             Export Full Report
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             Download as PDF
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             Schedule Report
           </button>
         </div>

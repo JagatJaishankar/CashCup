@@ -88,30 +88,30 @@ export default function AdminScoresPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <Link href="/admin" className="btn btn-ghost btn-sm text-primary mb-4 font-body">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary uppercase font-bold mb-4">
             SCORE MANAGEMENT
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Update and manage match scores
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
         {/* Tournament Selector */}
-        <div className="card bg-base-200 shadow-xl border-2 border-base-300 mb-8">
+        <div className="card bg-base-100 shadow-lg border border-base-300 mb-8">
           <div className="card-body">
             <label className="label">
-              <span className="label-text text-white font-helvetica font-semibold">Select Tournament</span>
+              <span className="label-text text-secondary font-body font-semibold">Select Tournament</span>
             </label>
             <select
-              className="select select-bordered bg-base-100 text-white w-full md:max-w-md"
+              className="select select-bordered bg-base-100 text-secondary border-base-300 w-full md:max-w-md"
               value={selectedTournament}
               onChange={(e) => setSelectedTournament(e.target.value)}
             >
@@ -126,26 +126,26 @@ export default function AdminScoresPage() {
 
         {/* Match Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="text-gray-400 text-sm font-helvetica">Total Matches</h3>
-              <p className="text-primary text-3xl font-righteous">{matchScores.length}</p>
+              <h3 className="text-neutral/60 text-sm font-body">Total Matches</h3>
+              <p className="text-primary text-3xl font-heading font-bold">{matchScores.length}</p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="text-gray-400 text-sm font-helvetica">Live Matches</h3>
-              <p className="text-error text-3xl font-righteous animate-pulse">
+              <h3 className="text-neutral/60 text-sm font-body">Live Matches</h3>
+              <p className="text-error text-3xl font-heading font-bold animate-pulse">
                 {matchScores.filter(m => m.status === 'live').length}
               </p>
             </div>
           </div>
 
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-lg border border-base-300">
             <div className="card-body">
-              <h3 className="text-gray-400 text-sm font-helvetica">Completed</h3>
-              <p className="text-success text-3xl font-righteous">
+              <h3 className="text-neutral/60 text-sm font-body">Completed</h3>
+              <p className="text-success text-3xl font-heading font-bold">
                 {matchScores.filter(m => m.status === 'completed').length}
               </p>
             </div>
@@ -155,24 +155,24 @@ export default function AdminScoresPage() {
         {/* Matches List */}
         <div className="space-y-4">
           {matchScores.map(match => (
-            <div key={match.id} className="card bg-base-200 shadow-xl border-2 border-base-300 hover:border-primary transition-all">
+            <div key={match.id} className="card bg-base-100 shadow-lg border border-base-300 hover:border-primary transition-all">
               <div className="card-body">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <span className={`badge ${getStatusBadge(match.status)}`}>
                       {match.status}
                     </span>
-                    <span className="text-gray-400 font-helvetica text-sm">
+                    <span className="text-neutral/60 font-body text-sm">
                       {match.date} • {match.time}
                     </span>
                   </div>
-                  <span className="text-gray-400 font-helvetica text-sm">{match.venue}</span>
+                  <span className="text-neutral/60 font-body text-sm">{match.venue}</span>
                 </div>
 
                 <div className="flex items-center justify-between gap-6">
                   {/* Home Team */}
                   <div className="flex-1 text-right">
-                    <h4 className="font-righteous text-xl text-white mb-2">{match.homeTeam}</h4>
+                    <h4 className="font-heading text-xl text-secondary uppercase font-bold mb-2">{match.homeTeam}</h4>
                   </div>
 
                   {/* Score Section */}
@@ -182,27 +182,27 @@ export default function AdminScoresPage() {
                         <input
                           type="number"
                           min="0"
-                          className="input input-bordered bg-base-100 text-white text-center w-16"
+                          className="input input-bordered bg-base-100 text-secondary border-base-300 text-center w-16"
                           value={match.homeScore || 0}
                           onChange={(e) => handleScoreUpdate(match.id, 'home', e.target.value)}
                         />
-                        <span className="text-gray-400 font-righteous text-2xl">:</span>
+                        <span className="text-neutral/60 font-heading text-2xl">:</span>
                         <input
                           type="number"
                           min="0"
-                          className="input input-bordered bg-base-100 text-white text-center w-16"
+                          className="input input-bordered bg-base-100 text-secondary border-base-300 text-center w-16"
                           value={match.awayScore || 0}
                           onChange={(e) => handleScoreUpdate(match.id, 'away', e.target.value)}
                         />
                       </>
                     ) : (
-                      <div className="bg-black px-8 py-4 rounded-lg border-2 border-primary min-w-[120px]">
+                      <div className="bg-base-200 px-8 py-4 rounded-lg border-2 border-primary min-w-[120px]">
                         <div className="flex items-center justify-center gap-3">
-                          <span className="text-primary font-righteous text-3xl">
+                          <span className="text-primary font-heading text-3xl font-bold">
                             {match.homeScore !== null ? match.homeScore : '-'}
                           </span>
-                          <span className="text-white font-righteous text-2xl">:</span>
-                          <span className="text-primary font-righteous text-3xl">
+                          <span className="text-secondary font-heading text-2xl">:</span>
+                          <span className="text-primary font-heading text-3xl font-bold">
                             {match.awayScore !== null ? match.awayScore : '-'}
                           </span>
                         </div>
@@ -212,7 +212,7 @@ export default function AdminScoresPage() {
 
                   {/* Away Team */}
                   <div className="flex-1 text-left">
-                    <h4 className="font-righteous text-xl text-white mb-2">{match.awayTeam}</h4>
+                    <h4 className="font-heading text-xl text-secondary uppercase font-bold mb-2">{match.awayTeam}</h4>
                   </div>
 
                   {/* Actions */}
@@ -221,13 +221,13 @@ export default function AdminScoresPage() {
                       <>
                         <button
                           onClick={() => handleSaveScore(match.id)}
-                          className="btn btn-sm btn-success font-righteous"
+                          className="btn btn-sm btn-success font-heading uppercase"
                         >
                           Save
                         </button>
                         <button
                           onClick={() => setEditingMatch(null)}
-                          className="btn btn-sm btn-outline font-righteous"
+                          className="btn btn-sm btn-outline font-heading uppercase"
                         >
                           Cancel
                         </button>
@@ -236,11 +236,11 @@ export default function AdminScoresPage() {
                       <>
                         <button
                           onClick={() => setEditingMatch(match.id)}
-                          className="btn btn-sm btn-primary font-righteous"
+                          className="btn btn-sm btn-primary font-heading uppercase"
                         >
                           Edit Score
                         </button>
-                        <button className="btn btn-sm btn-outline btn-primary font-righteous">
+                        <button className="btn btn-sm btn-outline btn-primary font-heading uppercase">
                           Details
                         </button>
                       </>
@@ -254,13 +254,13 @@ export default function AdminScoresPage() {
 
         {/* Quick Actions */}
         <div className="flex justify-center mt-8 gap-4">
-          <button className="btn btn-primary font-righteous">
+          <button className="btn btn-primary font-heading uppercase">
             + Add Match Result
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             Export Results
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             View Standings
           </button>
         </div>

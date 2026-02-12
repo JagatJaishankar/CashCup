@@ -4,40 +4,38 @@ import Image from "next/image";
 export default function TeamCard({ team }) {
   return (
     <Link href={`/teams/${team.id}`}>
-      <div className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-base-300 hover:border-primary group">
-        <figure className="relative h-48 bg-black overflow-hidden">
+      <div className="bg-base-100 border border-base-300 hover:border-primary transition-all group">
+        <div className="relative h-44 bg-base-200 overflow-hidden flex items-center justify-center">
           {team.logo ? (
             <Image
               src={team.logo}
               alt={team.name}
-              width={120}
-              height={120}
-              className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
+              width={100}
+              height={100}
+              className="object-contain group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center font-righteous text-4xl text-black">
-                {team.name.charAt(0)}
-              </div>
+            <div className="w-20 h-20 bg-secondary flex items-center justify-center font-heading text-3xl text-white">
+              {team.name.charAt(0)}
             </div>
           )}
-        </figure>
-        <div className="card-body p-4">
-          <h3 className="card-title font-righteous text-lg text-white">{team.name}</h3>
-          <p className="text-sm font-helvetica text-gray-400">{team.manager || "No Manager"}</p>
+        </div>
+        <div className="p-5">
+          <h3 className="font-heading text-lg text-secondary group-hover:text-primary transition-colors">{team.name}</h3>
+          <p className="text-sm font-body text-neutral/50 mt-1">{team.manager || "No Manager"}</p>
 
-          <div className="grid grid-cols-3 gap-2 mt-2 text-center">
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Players</p>
-              <p className="font-righteous text-primary">{team.playerCount || 0}</p>
+          <div className="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-base-300">
+            <div className="text-center">
+              <p className="text-xs text-neutral/40 font-body">Players</p>
+              <p className="font-heading text-lg text-secondary">{team.playerCount || 0}</p>
             </div>
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Wins</p>
-              <p className="font-righteous text-primary">{team.wins || 0}</p>
+            <div className="text-center">
+              <p className="text-xs text-neutral/40 font-body">Wins</p>
+              <p className="font-heading text-lg text-secondary">{team.wins || 0}</p>
             </div>
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Trophies</p>
-              <p className="font-righteous text-primary">{team.trophies || 0}</p>
+            <div className="text-center">
+              <p className="text-xs text-neutral/40 font-body">Trophies</p>
+              <p className="font-heading text-lg text-secondary">{team.trophies || 0}</p>
             </div>
           </div>
         </div>

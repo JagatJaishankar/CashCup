@@ -62,32 +62,32 @@ export default function ManagerTournamentsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <Link href="/manager" className="btn btn-ghost btn-sm text-primary mb-4">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary mb-4 uppercase">
             TOURNAMENT MANAGEMENT
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Register your team and manage tournament participation
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
         {/* Tabs */}
-        <div className="tabs tabs-boxed bg-base-200 mb-8">
+        <div className="tabs tabs-boxed bg-base-200 border border-base-300 mb-8">
           <button
-            className={`tab font-righteous ${activeTab === 'registered' ? 'tab-active' : ''}`}
+            className={`tab font-heading uppercase ${activeTab === 'registered' ? 'tab-active' : ''}`}
             onClick={() => setActiveTab('registered')}
           >
             Registered ({registeredTournaments.length})
           </button>
           <button
-            className={`tab font-righteous ${activeTab === 'available' ? 'tab-active' : ''}`}
+            className={`tab font-heading uppercase ${activeTab === 'available' ? 'tab-active' : ''}`}
             onClick={() => setActiveTab('available')}
           >
             Available ({availableTournaments.length})
@@ -125,17 +125,17 @@ export default function ManagerTournamentsPage() {
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
                     href={`/events/${tournament.id}`}
-                    className="btn btn-sm btn-outline btn-primary font-righteous"
+                    className="btn btn-sm btn-outline btn-primary font-heading uppercase"
                   >
                     View Details
                   </Link>
                   {!tournament.checkedIn && tournament.status === 'upcoming' && (
-                    <button className="btn btn-sm btn-primary font-righteous">
+                    <button className="btn btn-sm btn-primary font-heading uppercase">
                       Check In Team
                     </button>
                   )}
                   {tournament.status === 'ongoing' && (
-                    <button className="btn btn-sm btn-primary font-righteous">
+                    <button className="btn btn-sm btn-primary font-heading uppercase">
                       View Fixtures
                     </button>
                   )}
@@ -144,17 +144,17 @@ export default function ManagerTournamentsPage() {
             ))}
 
             {registeredTournaments.length === 0 && (
-              <div className="col-span-2 text-center py-20 bg-base-200 rounded-lg">
-                <svg className="w-24 h-24 mx-auto text-gray-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <div className="col-span-2 text-center py-20 bg-base-200 rounded-lg border border-base-300">
+                <svg className="w-24 h-24 mx-auto text-neutral/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
-                <h3 className="font-righteous text-2xl text-white mb-2">No Registered Tournaments</h3>
-                <p className="font-helvetica text-gray-400 mb-4">
+                <h3 className="font-heading text-2xl text-secondary mb-2 uppercase">No Registered Tournaments</h3>
+                <p className="font-body text-neutral/60 mb-4">
                   Your team is not registered for any tournaments yet
                 </p>
                 <button
                   onClick={() => setActiveTab('available')}
-                  className="btn btn-primary font-righteous"
+                  className="btn btn-primary font-heading uppercase"
                 >
                   Browse Available Tournaments
                 </button>
@@ -173,11 +173,11 @@ export default function ManagerTournamentsPage() {
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
                     href={`/events/${tournament.id}`}
-                    className="btn btn-sm btn-outline btn-primary font-righteous"
+                    className="btn btn-sm btn-outline btn-primary font-heading uppercase"
                   >
                     View Details
                   </Link>
-                  <button className="btn btn-sm btn-primary font-righteous">
+                  <button className="btn btn-sm btn-primary font-heading uppercase">
                     Register Team
                   </button>
                 </div>
@@ -185,12 +185,12 @@ export default function ManagerTournamentsPage() {
             ))}
 
             {availableTournaments.length === 0 && (
-              <div className="col-span-2 text-center py-20 bg-base-200 rounded-lg">
-                <svg className="w-24 h-24 mx-auto text-gray-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <div className="col-span-2 text-center py-20 bg-base-200 rounded-lg border border-base-300">
+                <svg className="w-24 h-24 mx-auto text-neutral/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
-                <h3 className="font-righteous text-2xl text-white mb-2">No Available Tournaments</h3>
-                <p className="font-helvetica text-gray-400">
+                <h3 className="font-heading text-2xl text-secondary mb-2 uppercase">No Available Tournaments</h3>
+                <p className="font-body text-neutral/60">
                   There are no tournaments open for registration at the moment
                 </p>
               </div>

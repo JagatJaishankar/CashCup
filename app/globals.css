@@ -3,50 +3,59 @@
 @plugin "daisyui/theme" {
   name: "cashcup";
   default: true;
-  prefersdark: true;
-  color-scheme: "dark";
+  prefersdark: false;
+  color-scheme: "light";
 
-  /* === BASE COLORS === */
-  --color-base-100: #0a0a0a; /* dark background */
-  --color-base-200: #1a1a1a; /* slightly lighter dark */
-  --color-base-300: #2a2a2a; /* card borders */
-  --color-base-content: #ffffff; /* white text on dark */
+  /* === BASE COLORS (LIGHT MODE) === */
+  --color-base-100: #ffffff; /* pure white background */
+  --color-base-200: #f8f9fa; /* light gray for cards */
+  --color-base-300: #e5e7eb; /* border gray */
+  --color-base-content: #0a0a0a; /* near-black text */
 
   /* === BRAND COLORS === */
-  --color-primary: #dbff00; /* neon yellow */
-  --color-primary-content: #000000; /* black text on neon */
-  --color-secondary: #000000; /* pure black */
-  --color-secondary-content: #dbff00; /* neon text on black */
+  --color-primary: #ff4d00; /* electric orange - sporty accent */
+  --color-primary-content: #ffffff; /* white text on orange */
+  --color-secondary: #0a0a0a; /* near-black */
+  --color-secondary-content: #ffffff; /* white text on black */
 
   /* === FEEDBACK COLORS === */
-  --color-success: #10b981; /* bright green success */
-  --color-success-content: #000000;
-  --color-warning: #f59e0b; /* amber warning */
-  --color-warning-content: #000000;
-  --color-error: #ef4444; /* red error */
+  --color-success: #059669; /* emerald green */
+  --color-success-content: #ffffff;
+  --color-warning: #d97706; /* amber */
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626; /* red */
   --color-error-content: #ffffff;
-  --color-info: #60a5fa; /* optional blue info tone */
-  --color-info-content: #000000;
+  --color-info: #2563eb; /* blue */
+  --color-info-content: #ffffff;
 
   /* === NEUTRALS === */
-  --color-neutral: #1a1a1a;
+  --color-neutral: #1f2937; /* charcoal */
   --color-neutral-content: #ffffff;
 
   /* === RADII & DEPTH === */
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
   --border: 1px;
-  --depth: 0;
+  --depth: 1;
   --noise: 0;
 }
 
-.font-righteous {
-  font-family: "righteous", san-serif;
+/* === TYPOGRAPHY === */
+.font-heading {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
-.font-helvetica {
-  font-family: Helvetica, Arial, sans-serif;
+.font-body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
 }
 
 /* === RESPONSIVE FIXES === */
@@ -54,53 +63,65 @@
   box-sizing: border-box;
 }
 
-/* Prevent horizontal overflow */
 html, body {
   overflow-x: hidden;
   max-width: 100vw;
 }
 
-/* Fix container padding on mobile */
+/* Container padding */
 .max-w-7xl {
   @apply px-4 md:px-6 lg:px-8;
 }
 
-/* Consistent section padding */
+/* Section spacing */
 section {
-  @apply py-8 md:py-12 lg:py-16;
+  @apply py-12 md:py-16 lg:py-20;
 }
 
-/* Card spacing fixes */
+/* Card styling */
 .card {
-  @apply mb-0;
+  @apply mb-0 border border-base-300 shadow-sm;
 }
 
 .card-body {
-  @apply p-4 md:p-6;
+  @apply p-5 md:p-6;
 }
 
-/* Table responsive */
+/* Table styling */
 .table {
   @apply text-sm md:text-base;
 }
 
-/* Button consistency */
+/* Button styling */
 .btn {
-  @apply text-sm md:text-base;
+  @apply text-sm md:text-base font-semibold tracking-wide;
   white-space: nowrap;
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  @apply bg-primary text-white border-primary hover:bg-primary/90 hover:border-primary/90;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white border-secondary hover:bg-secondary/90;
+}
+
+.btn-outline {
+  @apply border-2;
 }
 
 /* Form inputs */
 .input, .select, .textarea {
-  @apply w-full;
+  @apply w-full border-base-300;
 }
 
 /* Grid responsive gaps */
 .grid {
-  @apply gap-3 md:gap-4 lg:gap-6;
+  @apply gap-4 md:gap-5 lg:gap-6;
 }
 
-/* Prevent text overflow */
+/* Text overflow prevention */
 .card-title, h1, h2, h3, h4, h5, h6 {
   @apply break-words;
 }
@@ -111,28 +132,28 @@ img {
   height: auto;
 }
 
-/* Navbar fixes */
+/* Navbar styling */
 .navbar {
   @apply px-2 md:px-4;
   min-height: 4rem;
 }
 
-/* Footer responsive */
+/* Footer styling */
 footer {
   @apply px-4 md:px-6 lg:px-8;
 }
 
-/* Dropdown menu fixes */
+/* Dropdown menu */
 .dropdown-content {
   @apply max-w-[90vw] md:max-w-none;
 }
 
-/* Modal responsive */
+/* Modal */
 .modal-box {
   @apply max-w-[95vw] md:max-w-2xl;
 }
 
-/* Tabs responsive */
+/* Tabs */
 .tabs {
   @apply overflow-x-auto;
   scrollbar-width: thin;
@@ -143,40 +164,40 @@ footer {
 }
 
 .tabs::-webkit-scrollbar-thumb {
-  background: #dbff00;
+  background: var(--color-primary);
   border-radius: 4px;
 }
 
-/* Stats responsive */
+/* Stats */
 .stat {
-  @apply p-3 md:p-4;
+  @apply p-4 md:p-5;
 }
 
 .stat-value {
   @apply text-2xl md:text-3xl lg:text-4xl;
 }
 
-/* Alert spacing */
+/* Alert */
 .alert {
-  @apply p-3 md:p-4;
+  @apply p-4 md:p-5;
 }
 
-/* Badge sizing */
+/* Badge */
 .badge {
-  @apply text-xs md:text-sm;
+  @apply text-xs md:text-sm font-medium;
 }
 
-/* Progress bar */
+/* Progress */
 .progress {
   @apply h-2 md:h-3;
 }
 
-/* Divider spacing */
+/* Divider */
 .divider {
-  @apply my-4 md:my-6;
+  @apply my-4 md:my-5;
 }
 
-/* Space between sections */
+/* Space utilities */
 .space-y-4 > * + * {
   margin-top: 1rem;
 }
@@ -187,4 +208,29 @@ footer {
 
 .space-y-8 > * + * {
   margin-top: 2rem;
+}
+
+/* Custom accent underline for headings */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-primary);
+}
+
+/* Stat card hover effect */
+.stat-card {
+  @apply bg-base-100 border border-base-300 p-6 transition-all duration-200;
+}
+
+.stat-card:hover {
+  @apply border-primary shadow-md;
 }

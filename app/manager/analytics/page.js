@@ -45,40 +45,40 @@ export default function ManagerAnalyticsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <section className="bg-secondary text-white">
-        <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-base-100">
+      <section className="bg-base-200 border-b border-base-300">
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <Link href="/manager" className="btn btn-ghost btn-sm text-primary mb-4">
             ← Back to Dashboard
           </Link>
-          <h1 className="font-righteous text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl text-primary mb-4 uppercase">
             TEAM ANALYTICS
           </h1>
-          <p className="font-helvetica text-white">
+          <p className="font-body text-neutral/60">
             Comprehensive performance analysis and insights
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto py-8 md:py-12 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 space-y-8">
         {/* Time Range Selector */}
         <div className="flex justify-between items-center">
-          <h2 className="font-righteous text-2xl text-white">Performance Overview</h2>
-          <div className="tabs tabs-boxed bg-base-200">
+          <h2 className="font-heading text-2xl text-secondary uppercase">Performance Overview</h2>
+          <div className="tabs tabs-boxed bg-base-200 border border-base-300">
             <button
-              className={`tab font-righteous ${timeRange === 'season' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${timeRange === 'season' ? 'tab-active' : ''}`}
               onClick={() => setTimeRange('season')}
             >
               Season
             </button>
             <button
-              className={`tab font-righteous ${timeRange === 'month' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${timeRange === 'month' ? 'tab-active' : ''}`}
               onClick={() => setTimeRange('month')}
             >
               This Month
             </button>
             <button
-              className={`tab font-righteous ${timeRange === 'week' ? 'tab-active' : ''}`}
+              className={`tab font-heading uppercase ${timeRange === 'week' ? 'tab-active' : ''}`}
               onClick={() => setTimeRange('week')}
             >
               This Week
@@ -101,23 +101,23 @@ export default function ManagerAnalyticsPage() {
         {/* Recent Form & Top Performers */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Recent Form */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-sm border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Recent Form</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary mb-4 uppercase">Recent Form</h3>
               <div className="space-y-3">
                 {recentForm.map((match, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-base-100 rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-3 bg-base-200 rounded-lg border border-base-300">
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-righteous text-lg ${
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-heading text-lg ${
                         match.result === 'W' ? 'bg-success text-white' :
-                        match.result === 'D' ? 'bg-warning text-black' :
+                        match.result === 'D' ? 'bg-warning text-white' :
                         'bg-error text-white'
                       }`}>
                         {match.result}
                       </div>
-                      <p className="text-white font-helvetica">{match.match}</p>
+                      <p className="text-secondary font-body">{match.match}</p>
                     </div>
-                    <p className="text-primary font-righteous">{match.score}</p>
+                    <p className="text-primary font-heading">{match.score}</p>
                   </div>
                 ))}
               </div>
@@ -125,15 +125,15 @@ export default function ManagerAnalyticsPage() {
           </div>
 
           {/* Top Performers */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-sm border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Top Performers</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary mb-4 uppercase">Top Performers</h3>
               <div className="space-y-3">
                 {topPerformers.map((player, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-base-100 rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-3 bg-base-200 rounded-lg border border-base-300">
                     <div className="flex-1">
-                      <p className="text-white font-helvetica font-semibold">{player.name}</p>
-                      <div className="flex gap-2 text-sm text-gray-400 font-helvetica mt-1">
+                      <p className="text-secondary font-body font-semibold">{player.name}</p>
+                      <div className="flex gap-2 text-sm text-neutral/60 font-body mt-1">
                         <span>{player.position}</span>
                         <span>•</span>
                         <span>{player.goals}G</span>
@@ -142,8 +142,8 @@ export default function ManagerAnalyticsPage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-primary font-righteous text-xl">{player.rating}</p>
-                      <p className="text-gray-400 text-xs font-helvetica">Rating</p>
+                      <p className="text-primary font-heading text-xl">{player.rating}</p>
+                      <p className="text-neutral/60 text-xs font-body">Rating</p>
                     </div>
                   </div>
                 ))}
@@ -155,15 +155,15 @@ export default function ManagerAnalyticsPage() {
         {/* Injury Report & Discipline */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Injury Report */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-sm border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Injury Report</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary mb-4 uppercase">Injury Report</h3>
               {injuryReport.length > 0 ? (
                 <div className="space-y-3">
                   {injuryReport.map((injury, index) => (
-                    <div key={index} className="p-4 bg-base-100 rounded-lg border-l-4 border-warning">
+                    <div key={index} className="p-4 bg-base-200 rounded-lg border-l-4 border-warning">
                       <div className="flex items-center justify-between mb-2">
-                        <p className="text-white font-helvetica font-semibold">{injury.player}</p>
+                        <p className="text-secondary font-body font-semibold">{injury.player}</p>
                         <span className={`badge ${
                           injury.severity === 'severe' ? 'badge-error' :
                           injury.severity === 'moderate' ? 'badge-warning' :
@@ -172,8 +172,8 @@ export default function ManagerAnalyticsPage() {
                           {injury.severity}
                         </span>
                       </div>
-                      <p className="text-gray-400 font-helvetica text-sm">{injury.injury}</p>
-                      <p className="text-primary font-righteous text-sm mt-1">Return: {injury.status}</p>
+                      <p className="text-neutral/60 font-body text-sm">{injury.injury}</p>
+                      <p className="text-primary font-heading text-sm mt-1">Return: {injury.status}</p>
                     </div>
                   ))}
                 </div>
@@ -182,52 +182,52 @@ export default function ManagerAnalyticsPage() {
                   <svg className="w-16 h-16 mx-auto text-success mb-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                   </svg>
-                  <p className="text-success font-righteous">No Current Injuries</p>
-                  <p className="text-gray-400 font-helvetica text-sm">All players fit and available</p>
+                  <p className="text-success font-heading uppercase">No Current Injuries</p>
+                  <p className="text-neutral/60 font-body text-sm">All players fit and available</p>
                 </div>
               )}
             </div>
           </div>
 
           {/* Discipline Record */}
-          <div className="card bg-base-200 shadow-xl border-2 border-base-300">
+          <div className="card bg-base-100 shadow-sm border border-base-300">
             <div className="card-body">
-              <h3 className="card-title font-righteous text-2xl text-white mb-4">Discipline Record</h3>
+              <h3 className="card-title font-heading text-2xl text-secondary mb-4 uppercase">Discipline Record</h3>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-base-100 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-base-200 rounded-lg border border-base-300">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-warning rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <rect x="6" y="4" width="12" height="16" rx="2"/>
                       </svg>
                     </div>
-                    <span className="text-white font-helvetica">Yellow Cards</span>
+                    <span className="text-secondary font-body">Yellow Cards</span>
                   </div>
-                  <span className="text-warning font-righteous text-2xl">{disciplineRecord.yellowCards}</span>
+                  <span className="text-warning font-heading text-2xl">{disciplineRecord.yellowCards}</span>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-base-100 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-base-200 rounded-lg border border-base-300">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-error rounded-lg flex items-center justify-center">
                       <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <rect x="6" y="4" width="12" height="16" rx="2"/>
                       </svg>
                     </div>
-                    <span className="text-white font-helvetica">Red Cards</span>
+                    <span className="text-secondary font-body">Red Cards</span>
                   </div>
-                  <span className="text-error font-righteous text-2xl">{disciplineRecord.redCards}</span>
+                  <span className="text-error font-heading text-2xl">{disciplineRecord.redCards}</span>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-base-100 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-base-200 rounded-lg border border-base-300">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-base-300 rounded-lg flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                       </svg>
                     </div>
-                    <span className="text-white font-helvetica">Active Suspensions</span>
+                    <span className="text-secondary font-body">Active Suspensions</span>
                   </div>
-                  <span className="text-gray-400 font-righteous text-2xl">{disciplineRecord.suspensions}</span>
+                  <span className="text-neutral/60 font-heading text-2xl">{disciplineRecord.suspensions}</span>
                 </div>
               </div>
             </div>
@@ -236,13 +236,13 @@ export default function ManagerAnalyticsPage() {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 justify-center">
-          <button className="btn btn-primary font-righteous">
+          <button className="btn btn-primary font-heading uppercase">
             Export Full Report
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             Compare with League Average
           </button>
-          <button className="btn btn-outline btn-primary font-righteous">
+          <button className="btn btn-outline btn-primary font-heading uppercase">
             View Detailed Statistics
           </button>
         </div>

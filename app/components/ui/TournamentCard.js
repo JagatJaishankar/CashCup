@@ -1,51 +1,51 @@
 import Link from "next/link";
 
 export default function TournamentCard({ tournament }) {
-  const statusColors = {
-    upcoming: "badge-info",
-    registration: "badge-success",
-    ongoing: "badge-warning",
-    completed: "badge-neutral"
+  const statusStyles = {
+    upcoming: "bg-info/10 text-info",
+    registration: "bg-success/10 text-success",
+    ongoing: "bg-warning/10 text-warning",
+    completed: "bg-base-200 text-neutral/60"
   };
 
   return (
     <Link href={`/events/${tournament.id}`}>
-      <div className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-base-300 hover:border-primary group">
-        <div className="card-body">
-          <div className="flex justify-between items-start">
-            <h3 className="card-title font-righteous text-xl text-white group-hover:text-primary transition-colors">
+      <div className="bg-base-100 border border-base-300 hover:border-primary transition-all group">
+        <div className="p-6">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="font-heading text-lg text-secondary group-hover:text-primary transition-colors">
               {tournament.name}
             </h3>
-            <span className={`badge ${statusColors[tournament.status]} font-helvetica text-xs uppercase`}>
+            <span className={`px-2 py-1 text-xs font-heading uppercase tracking-wide ${statusStyles[tournament.status]}`}>
               {tournament.status}
             </span>
           </div>
 
-          <p className="font-helvetica text-gray-400">{tournament.description}</p>
+          <p className="font-body text-sm text-neutral/60 mb-5 leading-relaxed">{tournament.description}</p>
 
-          <div className="divider my-2"></div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Start Date</p>
-              <p className="font-righteous text-primary">{tournament.startDate}</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Prize Pool</p>
-              <p className="font-righteous text-primary">{tournament.prizePool}</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Teams</p>
-              <p className="font-righteous text-white">{tournament.teamsRegistered}/{tournament.maxTeams}</p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 font-helvetica">Entry Fee</p>
-              <p className="font-righteous text-white">{tournament.entryFee}</p>
+          <div className="border-t border-base-300 pt-5">
+            <div className="grid grid-cols-2 gap-5">
+              <div>
+                <p className="text-xs text-neutral/40 font-body mb-1">Start Date</p>
+                <p className="font-heading text-sm text-secondary">{tournament.startDate}</p>
+              </div>
+              <div>
+                <p className="text-xs text-neutral/40 font-body mb-1">Prize Pool</p>
+                <p className="font-heading text-sm text-primary">{tournament.prizePool}</p>
+              </div>
+              <div>
+                <p className="text-xs text-neutral/40 font-body mb-1">Teams</p>
+                <p className="font-heading text-sm text-secondary">{tournament.teamsRegistered}/{tournament.maxTeams}</p>
+              </div>
+              <div>
+                <p className="text-xs text-neutral/40 font-body mb-1">Entry Fee</p>
+                <p className="font-heading text-sm text-secondary">{tournament.entryFee}</p>
+              </div>
             </div>
           </div>
 
           {tournament.status === "registration" && (
-            <button className="btn btn-primary btn-sm mt-4 font-righteous">
+            <button className="btn btn-primary btn-sm mt-5 w-full font-heading text-xs tracking-wider">
               Register Now
             </button>
           )}
