@@ -13,7 +13,7 @@
 
 ## The Solution
 
-*CashCup is a UI concept designed for a Saudi football league to centralise league operations in a single product. The front‑end showcases how teams, players, events, and finances could live in one place—complete with dashboards for admins, managers, and players, plus live match views and QR‑code check‑in flows. This project focuses on interaction design, layout, and UX for a future full‑stack tournament platform.*
+*CashCup is a UI concept designed for a Saudi football league to centralise league operations in a single product. The front‑end showcases how teams, players, events, and finances could live in one place... Complete with dashboards for admins, managers, and players, plus live match views and QR‑code check‑in flows. This project focuses on interaction design, layout, and UX for a future full‑stack tournament platform.*
 
 ## Key Features
 
