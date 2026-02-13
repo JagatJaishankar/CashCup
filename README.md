@@ -40,4 +40,6 @@
 
 > Note: This is an incomplete project focused purely on front‑end design and UX exploration. There is no real data, authentication, or backend logic wired up yet.
 
+---
+
 Built by [Jagat Jaishankar](https://jagatjaishankar.com) · [Twitter](https://x.com/JaishankarJagat) · [LinkedIn](https://linkedin.com/in/jagatjaishankar)
